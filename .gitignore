@@ -31,3 +31,7 @@
 # "temporary" build files
 /petitionsweb/target
 
+
+petitionsweb/.classpath
+petitionsweb/.project
+petitionsweb/.settings/
