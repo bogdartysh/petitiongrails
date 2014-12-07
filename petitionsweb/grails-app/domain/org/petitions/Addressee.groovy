@@ -6,6 +6,8 @@ class Addressee {
 		corporateWebAddress url:true, blank:false, nullable:false
 		imageUrl url:true, blank:false, nullable:false
 		title blank:false
+		thresholdToBeSearchable min:1
+		thresholdToBeConsidered min:1
     }
 	
 	static hasMany = [petitions: Petition]
@@ -17,4 +19,6 @@ class Addressee {
 	String imageUrl
 	Date lastUpdatedOn = new Date()
 	Date createdOn = new Date()
+	Integer thresholdToBeSearchable = 100
+	Integer thresholdToBeConsidered = 3000
 }
