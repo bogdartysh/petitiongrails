@@ -8,6 +8,8 @@ class Addressee {
 		title blank:false
     }
 	
+	static hasMany = [petitions: Petition]
+	
 	Person responsiblePerson
 	String title
 	String description

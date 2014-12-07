@@ -3,7 +3,6 @@ package org.petitions
 import grails.rest.*
 import java.util.Date;
 
-@Resource(uri='/persons')
 class Person {
 
     static constraints = {
@@ -14,6 +13,7 @@ class Person {
 		secondName blank:true, nullable:true
 		lastName blank:false
     }
+	static hasMany = [addressees: Addressee]
 	
 	String email
 	String firstName
