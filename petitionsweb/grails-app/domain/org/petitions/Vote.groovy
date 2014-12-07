@@ -9,7 +9,7 @@ class Vote {
 	
 	String comments
 	String ip;
-	Request requst;
+	Petition requst;
 	Date createdOn = new Date();
 	Integer rate = 100;
 	String [] assumeAsFakeReasons;

@@ -1,6 +1,6 @@
 package org.petitions
 
-class Request {
+class Petition {
 
     static constraints = {
 		hostData nullable:true, blank:true

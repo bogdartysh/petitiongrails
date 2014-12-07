@@ -10,4 +10,8 @@ class PersonController {
 		
 	}
 	
+	def all() {
+		render Person.list() as JSON
+	}
+	
 }
