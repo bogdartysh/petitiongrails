@@ -35,3 +35,8 @@
 petitionsweb/.classpath
 petitionsweb/.project
 petitionsweb/.settings/
+
+
+petitionsweb/*.db
+
+.gitignore~
