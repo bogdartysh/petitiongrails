@@ -7,6 +7,10 @@ class Petition {
 		title blank:false
 		description blank: false
 		publicUrl url:true, blank:true, nullable:true
+		seachabilityThresholdReachedOn nullable:true
+		considerabilityThresholdReachedOn nullable:true
+		actionDescription nullable: true, blank: true
+		actionPerformedOn nullable:true
     }
 	
 	static hasMany = [votes: Vote]
@@ -22,4 +26,5 @@ class Petition {
 	Date seachabilityThresholdReachedOn
 	Date considerabilityThresholdReachedOn
 	String actionDescription
+	Date actionPerformedOn
 }
