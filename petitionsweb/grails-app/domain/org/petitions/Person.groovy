@@ -1,7 +1,9 @@
 package org.petitions
 
+import grails.rest.*
 import java.util.Date;
 
+@Resource(uri='/persons')
 class Person {
 
     static constraints = {
@@ -9,6 +11,7 @@ class Person {
 		personalPage url:true, blank: false
 		imageUrl url:true, blank:true, nullable:false
 		firstName blank:false
+		secondName blank:true, nullable:true
 		lastName blank:false
     }
 	

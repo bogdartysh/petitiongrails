@@ -11,6 +11,6 @@ class Vote {
 	String ip;
 	Request requst;
 	Date createdOn = new Date();
-	Byte rate = 100;
+	Integer rate = 100;
 	String [] assumeAsFakeReasons;
 }
