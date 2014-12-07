@@ -4,8 +4,8 @@ class Addressee {
 
     static constraints = {
 		corporateWebAddress url:true, blank:false, nullable:false
-		imageUrl url:true, blank:false, nullable:false
-		title blank:false
+		imageUrl url:true, blank:true, nullable:true
+		title blank:false, unique:true
 		thresholdToBeSearchable min:1
 		thresholdToBeConsidered min:1
     }
