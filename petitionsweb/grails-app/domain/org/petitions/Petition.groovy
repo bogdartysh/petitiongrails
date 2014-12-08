@@ -20,7 +20,7 @@ class Petition {
 	String publicUrl
 	Addressee addressee;
 	Date createdOn = new Date();
-	Person person;
+	Person createdBy;
 	String ip;
 	String hostData;
 	Date seachabilityThresholdReachedOn

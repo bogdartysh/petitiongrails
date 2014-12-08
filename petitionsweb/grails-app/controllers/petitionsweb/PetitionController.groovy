@@ -1,24 +1,28 @@
 package petitionsweb
 
-import org.petitions.*
 import grails.converters.JSON
+
+import org.petitions.*
 
 class PetitionController {
 
 	static allowedMethods = [add:'POST']
-	static defaultAction = "new_ptition"
 
 	def all() {
 		render Petition.list() as JSON
 	}
-	
+
 	def get() {
 		render Petition.get(params.id) as JSON
 	}
-	
-	def new_petition() {
-		
+
+	def create() {
+		[
+			addressee:Addressee.get(params.addresseeId)
+		]
 	}
+
+
 
 	def add() {
 		if (Petition.findByTitle(params.title.toString().trim())) {

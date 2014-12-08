@@ -6,11 +6,13 @@ class Person {
 
 	static constraints = {
 		email email:true, blank:false
-		personalPage url:true, blank: false
+		personalPage url:true, blank: false, nullable:true
 		imageUrl url:true, blank:true, nullable:false
-		firstName blank:false
-		secondName blank:true, nullable:true
-		lastName blank:false
+		firstName blank:false, size: 3..50
+		secondName blank:true, nullable:true, size: 3..50
+		lastName blank:false, size: 3..50
+		phone blank: false, nullable:true, size:3..20
+		postalAddress blank:true, nullable:true, size:0..100
 	}
 	static hasMany = [addressees: Addressee, comments: Comment]
 
@@ -21,6 +23,8 @@ class Person {
 	String title
 	String personalPage
 	String imageUrl
+	String phone
+	String postalAddress
 
 
 	Date lastUpdatedOn = new Date()

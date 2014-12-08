@@ -100,7 +100,7 @@
 			</g:if>
 			<div align="center">
 				<g:link controller="Petition" action="create"
-					params="addresseeId:addressee.id"
+					params="[addresseeId:addressee.id]"
 					class="pure-button pure-button-primary">Додати петицію</g:link>
 			</div>
 	</article>
