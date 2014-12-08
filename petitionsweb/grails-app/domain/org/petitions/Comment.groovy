@@ -7,5 +7,5 @@ class Comment {
 
 	Petition petition
 	Date createdOn = new Date()
-	Person commiter
+	Person createdBy
 }
