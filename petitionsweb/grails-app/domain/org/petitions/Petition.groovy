@@ -2,7 +2,7 @@ package org.petitions
 
 class Petition {
 
-    static constraints = {
+	static constraints = {
 		hostData nullable:true, blank:true
 		title blank:false, unique:true
 		description blank: false
@@ -12,10 +12,8 @@ class Petition {
 		closedOn nullable:true
 		actionDescription nullable: true, blank: true
 		actionPerformedOn nullable:true
-    }
-	
-	static hasMany = [votes: Vote]
-	
+	}
+
 	String title
 	String description
 	String publicUrl
