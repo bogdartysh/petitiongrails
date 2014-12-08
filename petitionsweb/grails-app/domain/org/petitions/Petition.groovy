@@ -12,6 +12,7 @@ class Petition {
 		closedOn nullable:true
 		actionDescription nullable: true, blank: true
 		actionPerformedOn nullable:true
+		closedBy nullable:true
 	}
 
 	String title
@@ -25,6 +26,7 @@ class Petition {
 	Date seachabilityThresholdReachedOn
 	Date considerabilityThresholdReachedOn
 	Date closedOn
+	Person closedBy
 	String actionDescription
 	Date actionPerformedOn
 }
