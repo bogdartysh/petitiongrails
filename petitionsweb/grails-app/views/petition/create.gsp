@@ -49,7 +49,7 @@
 											<label for="edit-first-name">Ім'я </label>
 										</div>
 										<div class="form-input textfield">
-											<input type="text" name="firstName" required
+											<input type="text" name="firstName" required  pattern="[А-ЯЇҐЄ]{1}[а-я'їґєж]{2,20}"
 												class="form-text required form-element-type-textfield" />
 										</div>
 									</div>
@@ -61,7 +61,7 @@
 											<label for="edit-first-name">По-батькові</label>
 										</div>
 										<div class="form-input textfield">
-											<g:textField name="secondName"
+											<g:textField name="secondName"  pattern="[А-ЯЇҐЄ]{1}[а-я'їґєж]{2,20}"
 												class="form-text required form-element-type-textfield" />
 										</div>
 									</div>
@@ -73,7 +73,7 @@
 											<label for="edit-middle-name">Прізвище</label>
 										</div>
 										<div class="form-input textfield">
-											<input type="text" name="lastName" required
+											<input type="text" name="lastName" required pattern="[А-ЯЇҐЄ]{1}[а-я'їґєж]{2,20}"
 												class="form-text required form-element-type-textfield" />
 										</div>
 									</div>
@@ -103,7 +103,7 @@
 										</div>
 										<div class="form-input textfield">
 											<input id="phone" name="phone" type="tel" size="20" required
-												class="form-text required form-element-type-textfield" />
+												class="form-text required form-element-type-textfield"/>
 										</div>
 									</div>
 								</div>
