@@ -1,9 +1,11 @@
 package petitionsweb
 
+import org.petitions.Addressee
+
 class DefaultController {
 	static defaultAction = "index"
 
 	def index() {
-		render "hello"
+		[addressees: Addressee.all ]
 	}
 }

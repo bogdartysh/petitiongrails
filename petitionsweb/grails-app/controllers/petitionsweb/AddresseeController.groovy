@@ -1,12 +1,16 @@
 package petitionsweb
 
-import org.petitions.*
 import grails.converters.JSON
 
-class AddresseeController {
+import org.petitions.*
 
-    def index() { }
-	
+class AddresseeController {
+	static defaultAction = "index"
+
+	def index() {
+		[addressee: Addressee.get(params.id)]
+	}
+
 	def all() {
 		render Addressee.list() as JSON
 	}
