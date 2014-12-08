@@ -27,7 +27,7 @@
 </head>
 <body>
 	<header>
-		<h1>Онлайн петиції до державних органів України та посадовців.</h1>
+		<h1><g:link uri="/">Онлайн петиції до державних органів України та посадовців.</g:link></h1>
 		<h2>
 			${person.title}
 			${person.firstName }
@@ -45,15 +45,17 @@
 					</a></td>
 				</tr>
 				<tr class="pure-table-odd">
-					<td >Посада</td>
-					<td>${person.title }</td>
+					<td>Посада</td>
+					<td>
+						${person.title }
+					</td>
 				</tr>
 			</tbody>
 		</table>
-		
+
 		Взяв на себе відповідальність за обробку запитів до:
 		<table>
-		<thead>
+			<thead>
 				<tr>
 					<th>No.</th>
 					<th>Назва</th>
@@ -72,6 +74,19 @@
 				</g:each>
 			</tbody>
 		</table>
+
+		<g:if test="${!person.comments.isEmpty()}">
+		Відповіді на запити:
+		<table><thead>
+				<tr>
+					<th>No.</th>
+					<th>Запит</th>
+					<th>Отримувач</th>
+					<th>Дата відповіді</th>
+				</tr>
+			</thead>
+		</table>
+		</g:if>
 
 
 	</article>
