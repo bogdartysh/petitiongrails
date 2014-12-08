@@ -1,6 +1,5 @@
-package petitionsweb
+package org.petitions
 
-import org.petitions.Petition
 
 class PetitionStatistic {
 

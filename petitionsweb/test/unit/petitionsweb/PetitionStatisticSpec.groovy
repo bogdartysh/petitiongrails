@@ -1,5 +1,7 @@
 package petitionsweb
 
+import org.petitions.PetitionStatistic;
+
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 
