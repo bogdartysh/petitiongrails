@@ -20,9 +20,12 @@ class Petition {
 	String publicUrl
 	Addressee addressee;
 	Date createdOn = new Date();
-	Person createdBy;
+	Person receivingPerson;
 	String ip;
 	String hostData;
+	String senderEmail
+	String senderPhone
+	
 	Date seachabilityThresholdReachedOn
 	Date considerabilityThresholdReachedOn
 	Date closedOn

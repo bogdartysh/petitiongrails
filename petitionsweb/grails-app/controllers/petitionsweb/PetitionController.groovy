@@ -6,7 +6,7 @@ import org.petitions.*
 
 class PetitionController {
 
-	static allowedMethods = [add:'POST']
+	static allowedMethods = [submit:'POST']
 
 	def all() {
 		render Petition.list() as JSON
@@ -24,7 +24,7 @@ class PetitionController {
 
 
 
-	def add() {
+	def submit() {
 		if (Petition.findByTitle(params.title.toString().trim())) {
 			render "{status='VALIDATION_FAILED', details={errors=['same.title.exists']}}"
 		}

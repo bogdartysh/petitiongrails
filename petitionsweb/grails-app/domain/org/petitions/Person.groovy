@@ -12,7 +12,7 @@ class Person {
 		secondName blank:true, nullable:true, size: 3..50
 		lastName blank:false, size: 3..50
 		phone blank: false, nullable:true, size:3..20
-		postalAddress blank:true, nullable:true, size:0..100
+		postalAddress blank:true, nullable:true, size:0..1000
 	}
 	static hasMany = [addressees: Addressee, comments: Comment]
 
