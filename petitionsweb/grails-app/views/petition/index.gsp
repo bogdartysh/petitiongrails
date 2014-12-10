@@ -1,8 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <html lang="uk">
 <head>
-<title>Онлайн пропозиції із законодавства до структур Верховної
-	Ради України</title>
+<title><g:message code="default.title" /></title>
 <meta charset="UTF-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="robots" content="index, follow" />
@@ -10,7 +9,7 @@
 	media="screen, print" title="Style" charset="utf-8" />
 <link rel="stylesheet" href="../../css/pdf.css" type="text/css"
 	media="print" title="PDF" charset="utf-8" />
-<script src='https://www.google.com/recaptcha/api.js' async></script>
+<g:javascript library="jquery" plugin="jquery" />
 </head>
 <body class="body js" onload="addJsClass();">
 	<header>
@@ -25,8 +24,9 @@
 		<div id="header">
 			<h1>
 				<g:link uri="/">
-					<div  style="text-decoration:none;">Онлайн петиції до державних органів
-						України та посадовців.</div>
+					<div style="text-decoration: none;">
+						<g:message code="default.title" />
+					</div>
 				</g:link>
 			</h1>
 			<h2>
@@ -145,20 +145,22 @@
 						</tbody>
 					</table>
 				</g:if>
+			<p>
+				Наразі проголосувало
+				${petition?.votes?.size() }.
+			</p>
 
 
-				<g:if test="!${petition.closedOn}">
-					<g:form controller="vote" action="support">
-						<div style="text-align: center">
-							<div class="g-recaptcha" style="text-align: center"
-								data-sitekey="6LcvFf8SAAAAAHGhcka5J9Pu29em63SwxABo4WpK">&nbsp;</div>
-							<br />
-							<g:hiddenField name="id" value="${petition.id }" />
-							<input type="submit" class="btn-success btn"
-								style="color: white;" value="Підтримую!!!">
-						</div>
-					</g:form>
-				</g:if>
+
+			<g:if test="!${petition.closedOn}">
+				<div id="message"></div>
+				<div id="error"></div>
+				<g:remoteLink controller="vote" params='[id:"${petition.id}"]'
+					update="[success: 'message', failure: 'error']">
+					<div class="btn-success btn" style="color: white;">
+						Підтримую!!!</div>
+				</g:remoteLink>
+			</g:if>
 		</div>
 	</article>
 	<footer>

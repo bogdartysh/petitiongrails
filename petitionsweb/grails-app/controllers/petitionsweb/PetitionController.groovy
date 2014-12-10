@@ -32,7 +32,7 @@ class PetitionController {
 		else {
 			Petition petition = new Petition(params)
 			petition.addressee = Addressee.get(params.addresseeId)
-			petition.requestDetails = RequestDetails.find{ userAgent == request.getHeader("User-Agent") && remoteAddr == request.getRemoteAddr() && forwared =="" + request.getHeader("X-Forwarded-For")}
+			petition.requestDetails = RequestDetails.findAll{ userAgent == request.getHeader("User-Agent") && remoteAddr == request.getRemoteAddr() && forwared =="" + request.getHeader("X-Forwarded-For")}?.get(0)
 			if (petition.requestDetails == null) {
 				petition.requestDetails = new RequestDetails(forwared :  "" + request.getHeader("X-Forwarded-For"), userAgent : "" + request.getHeader("User-Agent"), remoteAddr : "" + request.getRemoteAddr())
 				petition.requestDetails.save(flush:true, failOnError:true)

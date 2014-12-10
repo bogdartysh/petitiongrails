@@ -2,11 +2,12 @@ package org.petitions
 
 class Vote {
 
-    static constraints = {
+	static constraints = {
 		rate min:0, max:100
 		comments nullable:true, blank: true
-    }
-	
+		assumeAsFakeReasons nullable: true
+	}
+
 	String comments
 	RequestDetails requestDetails
 	Petition petition;

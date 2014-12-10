@@ -16,7 +16,7 @@ class Petition {
 		requestDetails nullable:true
 	}
 
-	static hasMany = [statistics: PetitionStatistic, comments: Comment]
+	static hasMany = [statistics: PetitionStatistic, comments: Comment, votes:Vote]
 
 	String title
 	String description
