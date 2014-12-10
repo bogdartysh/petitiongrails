@@ -3,21 +3,18 @@ package petitionsweb
 import grails.converters.JSON
 
 import org.petitions.*
+import org.petitions.service.RequestDetailsDaoService;
 
 class VoteController {
 	static defaultAction = "index"
+	
+	RequestDetailsDaoService requestDetailsDaoService
+	
 	def index() {
-		def petition = Petition.get(params.id)
+		def petition = Petition.read(params.id)
 		def votes = Vote.findAll{petition == petition}
 
-		def vote = new Vote(petition: petition)
-		def requestDetails = RequestDetails.findAll{ userAgent == request.getHeader("User-Agent") && remoteAddr == request.getRemoteAddr() && forwared =="" + request.getHeader("X-Forwarded-For")}
-		if (vote.requestDetails == null) {
-			vote.requestDetails = new RequestDetails(forwared :  "" + request.getHeader("X-Forwarded-For"), userAgent : "" + request.getHeader("User-Agent"), remoteAddr : "" + request.getRemoteAddr())
-			vote.requestDetails.save(flush:true, failOnError:true)
-		} else {
-			vote.requestDetails = requestDetails[0]
-		}
+		def vote = new Vote(petition: petition, requestDetails : requestDetailsDaoService.getPersistedRequestDetails(request))
 
 		if ( vote.requestDetails.remoteAddr && votes.any{v -> v.requestDetails.remoteAddr == vote.requestDetails.remoteAddr}) {
 			render "Схоже ви вже голосували (э запис про цей ip) "

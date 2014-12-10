@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <html lang="uk">
 <head>
-<title>Онлайн петиції до державних органів України та посадовців</title>
+<title><g:message code="default.title" /></title>
 <meta charset="UTF-8" />
 <meta name="robots" content="index, follow" />
 <link rel="stylesheet" type="text/css"
@@ -28,7 +28,7 @@
 <body>
 	<header>
 		<h1>
-			<g:link uri="/">Онлайн петиції до державних органів України та посадовців.</g:link>
+			<g:link uri="/"><g:message code="default.title" /></g:link>
 		</h1>
 		<h2>
 			${addressee.title}
