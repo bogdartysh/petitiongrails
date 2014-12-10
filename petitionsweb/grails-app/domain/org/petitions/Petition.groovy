@@ -3,7 +3,6 @@ package org.petitions
 class Petition {
 
 	static constraints = {
-		hostData nullable:true, blank:true
 		title blank:false, unique:true
 		description blank: false
 		publicUrl url:true, blank:true, nullable:true
@@ -13,6 +12,7 @@ class Petition {
 		actionDescription nullable: true, blank: true
 		actionPerformedOn nullable:true
 		closedBy nullable:true
+		requestDetails nullable:true
 	}
 
 	String title
@@ -20,12 +20,7 @@ class Petition {
 	String publicUrl
 	Addressee addressee;
 	Date createdOn = new Date();
-	Person receivingPerson;
-	String ip;
-	String hostData;
-	String senderEmail
-	String senderPhone
-	
+	RequestDetails requestDetails
 	Date seachabilityThresholdReachedOn
 	Date considerabilityThresholdReachedOn
 	Date closedOn

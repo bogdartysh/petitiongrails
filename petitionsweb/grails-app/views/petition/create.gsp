@@ -32,9 +32,74 @@
 						</g:link>
 						.
 					</p>
+
+					<g:if test="${validation?.trim()}">
+						<p>Вибачте, але Вам доведеться перевірити дані:</p>
+						<ul>
+							<g:if test="${validation?.trim()}">
+								<li><g:if test="${validation == 'petition.title.exists'}">
+					  	петиція <g:link controller="Petition"
+											params="[id:existedPetition.id]">
+								"${ existedPetition.title}"
+							</g:link> вже подана.</g:if></li>
+							</g:if>
+
+						</ul>
+					</g:if>
+
+
 					<div class="form-inner">
 						<form accept-charset="UTF-8" method="post" name="new_petition"
 							action="submit">
+							<fieldset>
+								<legend>Петиція</legend>
+								<p>Просимо заповнити петицію:</p>
+								<div class="form-form-element-wrapper">
+									<div class="form-item form-item-textfield "
+										id="edit-middle-name-wrapper">
+										<div class="form-label">
+											<label for="edit-middle-name">Назва</label>
+										</div>
+										<div class="form-input textfield">
+											<input type="text" id="title" name="title" required
+												size="400"
+												value="${title}"
+												class="form-text required form-element-type-textfield" />
+										</div>
+										<div class="form-error" id="error.title"></div>
+									</div>
+
+									<div class="form-form-element-wrapper">
+										<div class="form-item form-item-textfield "
+											id="edit-middle-name-wrapper">
+											<div class="form-label">
+												<label for="edit-middle-name">Опис</label>
+											</div>
+											<div class="form-input">
+												<input type="textared" id="description" name="description"
+													rows="10" required
+													class="form-text required form-element-type-textfield" />
+											</div>
+										</div>
+									</div>
+
+									<div class="form-form-element-wrapper">
+										<div class="form-item form-item-textfield "
+											id="edit-middle-name-wrapper">
+											<div class="form-label">
+												<label for="edit-middle-name">Веб адреса на ресурс з
+													більш детальною інформацією (за наявності)</label>
+											</div>
+											<div class="form-input textfield">
+												<input id="publicUrl" name="publicUrl" type="url" size="100"
+													class="form-text required form-element-type-textfield" />
+											</div>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+
+
 							<fieldset class="form-element-type-fieldset" id="name">
 								<legend>Ваше ім'я</legend>
 								<p>Просимо надати Ваше повне ім'я (за бажанням):</p>
@@ -74,6 +139,7 @@
 									</div>
 								</div>
 							</fieldset>
+
 							<fieldset>
 								<legend>Контактні дані</legend>
 								<p>Просимо надати Ваші контактні дані (за бажанням):</p>
@@ -131,52 +197,6 @@
 								</div>
 							</fieldset>
 
-							<fieldset>
-								<legend>Петиція</legend>
-								<p>Просимо заповнити петицію:</p>
-								<div class="form-form-element-wrapper">
-									<div class="form-item form-item-textfield "
-										id="edit-middle-name-wrapper">
-										<div class="form-label">
-											<label for="edit-middle-name">Назва</label>
-										</div>
-										<div class="form-input textfield">
-											<input type="text" id="title" name="title" required
-												size="400"
-												class="form-text required form-element-type-textfield" />
-										</div>
-										<div class="form-error" id="error.title"></div>
-									</div>
-
-									<div class="form-form-element-wrapper">
-										<div class="form-item form-item-textfield "
-											id="edit-middle-name-wrapper">
-											<div class="form-label">
-												<label for="edit-middle-name">Опис</label>
-											</div>
-											<div class="form-input">
-												<input type="textared" id="description" name="description"
-													rows="10" required
-													class="form-text required form-element-type-textfield" />
-											</div>
-										</div>
-									</div>
-
-									<div class="form-form-element-wrapper">
-										<div class="form-item form-item-textfield "
-											id="edit-middle-name-wrapper">
-											<div class="form-label">
-												<label for="edit-middle-name">Веб адреса на ресурс з
-													більш детальною інформацією (за наявності)</label>
-											</div>
-											<div class="form-input textfield">
-												<input id="publicUrl" name="publicUrl" type="url" size="100"
-													class="form-text required form-element-type-textfield" />
-											</div>
-										</div>
-									</div>
-								</div>
-							</fieldset>
 
 							<div class="form-form-element-wrapper">
 								<div class="form-item form-item-checkbox">
@@ -196,8 +216,7 @@
 										tabindex="3" class="form-submit button default-right-arrow"
 										style="display: block;"><img
 										class="floatRight formSubmitButtonAjaxLoader"
-										style="padding-right: 6px; margin-top: -2px; display: none;"
-										>
+										style="padding-right: 6px; margin-top: -2px; display: none;">
 								</div>
 							</div>
 						</form>

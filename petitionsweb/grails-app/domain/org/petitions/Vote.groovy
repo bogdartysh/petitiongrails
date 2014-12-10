@@ -8,7 +8,7 @@ class Vote {
     }
 	
 	String comments
-	String ip;
+	RequestDetails requestDetails
 	Petition petition;
 	Date createdOn = new Date();
 	Integer rate = 100;
