@@ -4,45 +4,36 @@
 <title><g:message code="default.title" /></title>
 <meta charset="UTF-8" />
 <meta name="robots" content="index, follow" />
-<link rel="stylesheet" type="text/css"
-	href="//developers.google.com/_static/50d14ed2ec/css/screen-maia.css" />
-<link
-	href='//fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic,500,500italic,300,300italic'
-	rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="${resource(dir: 'css', file: 'pdf.css')}"
+	type="text/css" media="screen, print" title="Style" charset="utf-8" />
 
-
-<link rel="stylesheet" type="text/css"
-	href="https://developers.google.com/_static/50d14ed2ec/css/screen-docs.css" />
-
-
-<link rel="stylesheet" type="text/css" id="screen-foot"
-	data-href="https://developers.google.com/_static/50d14ed2ec/css/screen-foot.css" />
-
-<link rel="shortcut icon" href="/_static/50d14ed2ec/images/favicon.ico">
-<link href='//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700'
-	rel='stylesheet' type='text/css'>
-
-<link rel="stylesheet"
-	href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
 </head>
-<body>
+<body class="body">
 	<header>
-		<h1>
-			<g:link uri="/"><g:message code="default.title" /></g:link>
-		</h1>
-		<h2>
-			${addressee.title}
-		</h2>
+		<div id="navigation">
+			<ul>
+				<li><g:link uri="/">Головна</g:link></li>
+				<li><g:link uri="/about">Відкриті пропозиції</g:link></li>
+				<li><g:link uri="/about">Про проект</g:link></li>
+				<li><g:link uri="/contacts">Контакти</g:link></li>
+			</ul>
+		</div>
+		<div id="header">
+			<h1>
+				${addressee.title}
+			</h1>
+		</div>
 	</header>
 	<article>
-			<table class="pure-table  pure-table-horizontal">
+		<div id="main" class="corner all container">
+			<table class="wiki-table" cellspacing="0" cellpadding="0" border="0">
 				<tbody>
 					<tr>
-						<td>Назва</td>
-						<td><a href="${addressee.corporateWebAddress }"> ${addressee.title}
-						</a></td>
+						<th>Назва</th>
+						<th><a href="${addressee.corporateWebAddress }"> ${addressee.title}
+						</a></th>
 					</tr>
-					<tr class="pure-table-odd">
+					<tr class="table-odd">
 						<td>Відповідальна особа</td>
 						<td><g:link controller="Person"
 								params="[id:addressee.responsiblePerson.id]">
@@ -56,13 +47,13 @@
 							${addressee.description}
 						</td>
 					</tr>
-					<tr class="pure-table-odd">
+					<tr class="table-odd">
 						<td>Кількість поданих петицій, <br /> по яких іде
 							голосування
 						</td>
 						<td><g:link controller="Addressee" action="votablepetitons"
 								params="[id:addressee.id]">
-								${addressee.openPetitionQty}
+								${addressee.petitions?.size()}
 							</g:link></td>
 					</tr>
 					<tr>
@@ -75,35 +66,74 @@
 				</tbody>
 			</table>
 
-			<g:if test="${addressee.openPetitionQty  > 0}">
-				<table>
-					<theader>
-					<tr>
-						<th>No.</th>
-						<th>Назва</th>
-						<th>Створений</th>
-					</tr>
-					</theader>
+			<g:if test="${openpetitions?.size()  > 0}">
+				<p>На стадії онлайн-голосування знаходяться наступні пропозиції:
+				</p>
+				<table class="wiki-table" class="wiki-table" cellspacing="0"
+					cellpadding="0" border="0">
+					<tbody>
+						<tr>
+							<th>No.</th>
+							<th>Назва</th>
+							<th>Створено</th>
+						</tr>
+
+
+						<g:each in="${openpetitions }" var="petition">
+							<tr>
+								<td><g:link controller="Petition" params="[id:petition.id]">
+										${petition.id }
+									</g:link></td>
+								<td><g:link controller="Petition" params="[id:petition.id]">
+										${petition.title }
+									</g:link></td>
+								<td><g:formatDate format="yyyy-MM-dd"
+										date="${petition.createdOn}" /></td>
+							</tr>
+
+						</g:each>
+					</tbody>
+				</table>
+			</g:if>
+			
+			<g:if test="${closedpetitions?.size()  > 0}">
+				<p>Опрацьовані пропозиції:</p>
+				<table class="wiki-table" class="wiki-table" cellspacing="0"
+					cellpadding="0" border="0">
+					<tbody>
+						<tr>
+							<th>No.</th>
+							<th>Назва</th>
+							<th>Створено</th>
+						</tr>
+
+
+						<g:each in="${closedpetitions }" var="petition">
+							<tr>
+								<td><g:link controller="Petition" params="[id:petition.id]">
+										${petition.id }
+									</g:link></td>
+								<td><g:link controller="Petition" params="[id:petition.id]">
+										${petition.title }
+									</g:link></td>
+								<td><g:formatDate format="yyyy-MM-dd"
+										date="${petition.createdOn}" /></td>
+							</tr>
+
+						</g:each>
+					</tbody>
 				</table>
 			</g:if>
 
-			<g:if test="${addressee.workedOutPtetitionQty  > 0}">
-				<table>
-					<theader>
-					<tr>
-						<th>No.</th>
-						<th>Назва</th>
-						<th>Створений</th>
-					</tr>
-					</theader>
-				</table>
-			</g:if>
 			<div align="center">
 				<g:link controller="Petition" action="create"
-					params="[addresseeId:addressee.id]"
-					class="pure-button pure-button-primary">Додати петицію</g:link>
+					params="[addresseeId:addressee.id]" class="btn-success btn"
+					style="color: white;">Додати петицію</g:link>
 			</div>
+		</div>
 	</article>
-	<footer>Co. UA Справа</footer>
+	<footer>
+		<div id="footer">Co. UA Справа</div>
+	</footer>
 </body>
 </html>

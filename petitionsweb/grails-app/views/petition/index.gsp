@@ -11,7 +11,7 @@
 
 <g:javascript library="jquery" plugin="jquery" />
 </head>
-<body class="body js" onload="addJsClass();">
+<body class="body">
 	<header>
 		<div id="navigation">
 			<ul>
@@ -167,7 +167,4 @@
 		<div id="footer">Co. UA Справа</div>
 	</footer>
 </body>
-
-<script type="text/javascript"
-	src="http://grails.org/doc/latest/js/docs.js"></script>
 </html>

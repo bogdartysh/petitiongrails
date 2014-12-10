@@ -8,7 +8,8 @@ class AddresseeController {
 	static defaultAction = "index"
 
 	def index() {
-		[addressee: Addressee.get(params.id)]
+		Addressee addressee = Addressee.read(params.id)
+		[addressee: addressee, openpetitions:  addressee.petitions.findAll{it.closedOn == null}, closedPetitions: addressee.petitions.findAll{it.closedOn != null}]
 	}
 
 	def all() {
