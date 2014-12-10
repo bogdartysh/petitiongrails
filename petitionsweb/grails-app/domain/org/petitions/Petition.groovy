@@ -1,5 +1,7 @@
 package org.petitions
 
+import groovy.time.*
+
 class Petition {
 
 	static constraints = {
@@ -14,6 +16,8 @@ class Petition {
 		requestDetails nullable:true
 	}
 
+	static hasMany = [statistics: PetitionStatistic, comments: Comment]
+
 	String title
 	String description
 	String publicUrl
@@ -22,7 +26,13 @@ class Petition {
 	RequestDetails requestDetails
 	Date seachabilityThresholdReachedOn
 	Date considerabilityThresholdReachedOn
+	Integer thresholdToBeSearchable = 100
+	Integer thresholdToBeConsidered = 3000
 	Date closedOn
 	Person closedBy
 	String closedDue
+
+	def getSeachableDeadline() {
+		use (TimeCategory) { createdOn + 30.days}
+	}
 }

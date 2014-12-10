@@ -3,7 +3,6 @@ package petitionsweb
 import grails.converters.JSON
 
 import org.petitions.*
-import org.petitions.RequestDetails
 
 class PetitionController {
 

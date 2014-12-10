@@ -29,4 +29,9 @@ class Person {
 
 	Date lastUpdatedOn = new Date()
 	Date createdOn = new Date()
+
+	@Override
+	String toString() {
+		title + " " +firstName + " " + lastName
+	}
 }
