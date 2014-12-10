@@ -9,8 +9,7 @@ class Petition {
 		seachabilityThresholdReachedOn nullable:true
 		considerabilityThresholdReachedOn nullable:true
 		closedOn nullable:true
-		actionDescription nullable: true, blank: true
-		actionPerformedOn nullable:true
+		closedDue nullable: true, blank: true
 		closedBy nullable:true
 		requestDetails nullable:true
 	}
@@ -25,6 +24,5 @@ class Petition {
 	Date considerabilityThresholdReachedOn
 	Date closedOn
 	Person closedBy
-	String actionDescription
-	Date actionPerformedOn
+	String closedDue
 }

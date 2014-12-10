@@ -13,15 +13,13 @@ class PetitionController {
 		render Petition.list() as JSON
 	}
 
-	def get() {
-		render Petition.get(params.id) as JSON
+	def index() {
+		[petition: Petition.get(params.id)]
 	}
 
 	def create() {
 		[addressee: Addressee.get(params.addresseeId)]
 	}
-
-
 
 	def submit() {
 		def existedPetition = Petition.findByTitle(params.title.toString().trim())
@@ -41,7 +39,7 @@ class PetitionController {
 				petition.requestDetails.save(flush:true, failOnError:true)
 			}
 			petition.save(flush:true, failOnError:true)
-			render "{status='OK', details={saved="+ (petition as JSON) +"}}"
+			render (view: "index", model:[petition: petition])
 		}
 	}
 }
