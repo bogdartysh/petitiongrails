@@ -5,10 +5,10 @@
 <meta charset="UTF-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="robots" content="index, follow" />
-<link rel="stylesheet" href="../../css/main.css" type="text/css"
-	media="screen, print" title="Style" charset="utf-8" />
-<link rel="stylesheet" href="../../css/pdf.css" type="text/css"
-	media="print" title="PDF" charset="utf-8" />
+
+<link rel="stylesheet" href="${resource(dir: 'css', file: 'pdf.css')}"
+	type="text/css" media="screen, print" title="Style" charset="utf-8" />
+
 <g:javascript library="jquery" plugin="jquery" />
 </head>
 <body class="body js" onload="addJsClass();">
