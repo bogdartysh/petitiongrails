@@ -164,3 +164,8 @@ a, a:hover, a:focus, a:active, a:hover, #main .project strong,
 	color: #fd7029;
 	text-decoration: underline;
 }
+
+a:-webkit-any-link {
+	text-decoration: none;
+	cursor: auto;
+}
