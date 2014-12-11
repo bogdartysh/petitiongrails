@@ -3,7 +3,7 @@ package petitionsweb
 import grails.converters.JSON
 
 import org.petitions.*
-
+import org.petitions.service.RequestDetailsDaoService
 import com.megatome.grails.RecaptchaService
 
 

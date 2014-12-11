@@ -76,6 +76,7 @@
 							<th>No.</th>
 							<th>Назва</th>
 							<th>Створено</th>
+							<th>Дата початку публічної компанії</th>
 						</tr>
 
 
@@ -89,6 +90,8 @@
 									</g:link></td>
 								<td><g:formatDate format="yyyy-MM-dd"
 										date="${petition.createdOn}" /></td>
+								<td><g:formatDate format="yyyy-MM-dd"
+										date="${petition.seachabilityThresholdReachedOn}" /></td>
 							</tr>
 
 						</g:each>
@@ -105,8 +108,9 @@
 							<th>No.</th>
 							<th>Назва</th>
 							<th>Створено</th>
+							<th>Дата завершення компанії</th>
+							<th>Дата опрацювання</th>
 						</tr>
-
 
 						<g:each in="${closedpetitions }" var="petition">
 							<tr>
@@ -118,6 +122,10 @@
 									</g:link></td>
 								<td><g:formatDate format="yyyy-MM-dd"
 										date="${petition.createdOn}" /></td>
+								<td><g:formatDate format="yyyy-MM-dd"
+										date="${petition.considerabilityThresholdReachedOn}" /></td>
+								<td><g:formatDate format="yyyy-MM-dd"
+										date="${petition.closedOn}" /></td>
 							</tr>
 
 						</g:each>

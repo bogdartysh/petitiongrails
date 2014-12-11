@@ -9,7 +9,16 @@ class AddresseeController {
 
 	def index() {
 		Addressee addressee = Addressee.read(params.id)
-		[addressee: addressee, openpetitions:  addressee.petitions.findAll{it.closedOn == null}, closedPetitions: addressee.petitions.findAll{it.closedOn != null}]
+		[   addressee: addressee,
+			openpetitions:  addressee.petitions.findAll{
+				it.closedOn == null && it.seachabilityThresholdReachedOn != null
+			}.sort{ it.closedOn },
+			failedPetitions: addressee.petitions.findAll{
+				it.closedOn != null && (it.seachabilityThresholdReachedOn == null || it.considerabilityThresholdReachedOn == null)
+			}.sort{ it.closedOn },
+			closedPetitions: addressee.petitions.findAll{
+				it.closedOn != null && it.seachabilityThresholdReachedOn != null
+			}.sort{ it.closedOn }]
 	}
 
 	def all() {
