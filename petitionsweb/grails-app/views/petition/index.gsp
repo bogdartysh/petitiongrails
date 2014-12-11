@@ -96,9 +96,10 @@
 				</g:if>
 				<g:else>
 					<blockquote class="note">
-						<p>Занадто мало голосів. Пропозиція не є доступною у пошуку.</p>
+						<p>Занадто мало голосів. Пропозиція не є доступною у пошуку.</p>						
 						<p>Якщо ви підтримуєте цю пропозицію, будь ласка повідомте про
 							неї своїх друзів, або зацікавлені сторони.</p>
+							<p>Адреса петиції: http://ua-sprava.rhcloud.com/petition/${petition.id}</p>
 						<p>
 							До <strong><g:formatDate format="yyyy-MM-dd"
 									date="${petition.getSeachableDeadline()}" /></strong> днів слід набрати

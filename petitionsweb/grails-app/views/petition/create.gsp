@@ -49,14 +49,18 @@
 			<g:if test="${validation?.trim()}">
 				<p>Вибачте, але Вам доведеться перевірити дані:</p>
 				<ul>
-					<g:if test="${validation?.trim()}">
-						<li><g:if test="${validation == 'petition.title.exists'}">
-					  	петиція <g:link controller="Petition"
-									params="[id:existedPetition.id]">
+					<g:if test="${validation == 'petition.title.exists'}">
+						<li>петиція <g:link controller="Petition"
+								params="[id:existedPetition.id]">
 								"${ existedPetition.title}"
-							</g:link> вже подана.</g:if></li>
+							</g:link> вже подана.
+						</li>
 					</g:if>
 
+					<g:if test="${validation == 'petition.recaptcha.verification.failed'}">
+						<li>капча заповнена з помилками.
+						</li>
+					</g:if>
 				</ul>
 			</g:if>
 
@@ -89,7 +93,7 @@
 									</div>
 									<div class="form-input">
 										<textarea id="description" name="description" rows="10"
-											cols="50"></textarea>
+											cols="76"></textarea>
 									</div>
 								</div>
 							</div>
@@ -220,8 +224,8 @@
 							<div class="form-error"></div>
 						</div>
 					</div>
-					<recaptcha:recaptcha>
-					
+					<recaptcha:recaptcha lang="ukr" />
+
 					<input type="hidden" name="addresseeId" value="${addressee.id}" />
 					<div class="form-button-wrapper">
 						<input type="submit" name="submit" value="Далі"

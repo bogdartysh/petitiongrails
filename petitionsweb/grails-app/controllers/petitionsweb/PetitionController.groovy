@@ -3,12 +3,15 @@ package petitionsweb
 import grails.converters.JSON
 
 import org.petitions.*
-import org.petitions.service.RequestDetailsDaoService;
+
+import com.megatome.grails.RecaptchaService
+
 
 class PetitionController {
 
 	static allowedMethods = [submit:'POST']
 	RequestDetailsDaoService requestDetailsDaoService
+	RecaptchaService recaptchaService
 
 	def all() {
 		render Petition.list() as JSON
@@ -23,8 +26,11 @@ class PetitionController {
 	}
 
 	def submit() {
-		
-		render params as JSON
+		if (!recaptchaService.verifyAnswer(session, request.getRemoteAddr(), params) ) {
+			params.put("validation", "petition.recaptcha.verification.failed")
+			render (view:"create", model:params)
+		}
+
 		def existedPetition = Petition.findByTitle(params.title.toString().trim())
 		if (existedPetition) {
 			params.putAt("addressee",Addressee.read(params.addresseeId))
