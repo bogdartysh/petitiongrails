@@ -6,5 +6,6 @@ class UrlMappings {
 
 		"/"( controller:'Default', action:'index' )
 		"500"(view:'/error')
+		"404"(view:'/error')
 	}
 }

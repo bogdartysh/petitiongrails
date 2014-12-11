@@ -88,10 +88,41 @@ grails.hibernate.osiv.readonly = false
 environments {
     development {
         grails.logging.jul.usebridge = true
-    }
+		oauth {
+			// ...
+			providers {
+			  // ...
+			  facebook {
+				api = org.scribe.builder.api.FacebookApi
+				key = '397339250423931'
+				secret = 'cb6c8d0e63f0f5ce6a4c5c23ea82fe4b'
+				successUri = 'http://localhost:8080/org.petitions.service/oauth/facebook/success'
+				failureUri = 'http://localhost:8080/org.petitions.service/oauth/facebook/error'
+				callback = "http://localhost:8080/org.petitions.service/oauth/facebook/callback"
+			  }
+			  // ...
+			}
+		  }
+		
+		    }
     production {
         grails.logging.jul.usebridge = false
-        // TODO: grails.serverURL = "http://www.changeme.com"
+        grails.serverURL = "http://ua-sprava.rhcloud.com"
+		oauth {
+			// ...
+			providers {
+			  // ...
+			  facebook {
+				api = org.scribe.builder.api.FacebookApi
+				key = '186071791550679'
+				secret = '2468a05edf404e70d771ac849d44aec1'
+				successUri = 'http://ua-sprava.rhcloud.com/oauth/facebook/success'
+				failureUri = 'http://ua-sprava.rhcloud.coms/oauth/facebook/error'
+				callback = "http://ua-sprava.rhcloud.com/oauth/facebook/callback"
+			  }
+			  // ...
+			}
+		  }
     }
 }
 
@@ -116,21 +147,7 @@ log4j.main = {
            'net.sf.ehcache.hibernate'
 }
 
-oauth {
-	// ...
-	providers {
-	  // ...
-	  facebook {
-		api = org.scribe.builder.api.FacebookApi
-		key = 'oauth_facebook_key'
-		secret = 'oauth_facebook_secret'
-		successUri = '/oauth/facebook/success'
-		failureUri = '/oauth/facebook/error'
-		callback = "http://ua-sprava.rhcloud.com/oauth/facebook/callback"
-	  }
-	  // ...
-	}
-  }
+
 
 grails.plugin.springsecurity.securityConfigType = "InterceptUrlMap"
 grails.plugin.springsecurity.interceptUrlMap = [
