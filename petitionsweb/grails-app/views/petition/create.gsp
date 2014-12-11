@@ -57,9 +57,9 @@
 						</li>
 					</g:if>
 
-					<g:if test="${validation == 'petition.recaptcha.verification.failed'}">
-						<li>капча заповнена з помилками.
-						</li>
+					<g:if
+						test="${validation == 'petition.recaptcha.verification.failed'}">
+						<li>капча заповнена з помилками.</li>
 					</g:if>
 				</ul>
 			</g:if>
@@ -225,7 +225,7 @@
 						</div>
 					</div>
 					<recaptcha:recaptcha lang="ukr" />
-
+					<oauth:connect provider="facebook" id="facebook-connect-link">Facebook</oauth:connect>
 					<input type="hidden" name="addresseeId" value="${addressee.id}" />
 					<div class="form-button-wrapper">
 						<input type="submit" name="submit" value="Далі"

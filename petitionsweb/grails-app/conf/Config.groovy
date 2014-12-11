@@ -115,3 +115,25 @@ log4j.main = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
+oauth {
+	// ...
+	providers {
+	  // ...
+	  facebook {
+		api = org.scribe.builder.api.FacebookApi
+		key = 'oauth_facebook_key'
+		secret = 'oauth_facebook_secret'
+		successUri = '/oauth/facebook/success'
+		failureUri = '/oauth/facebook/error'
+		callback = "http://ua-sprava.rhcloud.com/oauth/facebook/callback"
+	  }
+	  // ...
+	}
+  }
+
+grails.plugin.springsecurity.securityConfigType = "InterceptUrlMap"
+grails.plugin.springsecurity.interceptUrlMap = [
+	'/':             ['permitAll'],
+	'/**':           ['permitAll']
+]

@@ -96,10 +96,12 @@
 				</g:if>
 				<g:else>
 					<blockquote class="note">
-						<p>Занадто мало голосів. Пропозиція не є доступною у пошуку.</p>						
+						<p>Занадто мало голосів. Пропозиція не є доступною у пошуку.</p>
 						<p>Якщо ви підтримуєте цю пропозицію, будь ласка повідомте про
 							неї своїх друзів, або зацікавлені сторони.</p>
-							<p>Адреса петиції: <strong>http://ua-sprava.rhcloud.com/petition/${petition.id}</strong></p>
+						<p>
+							Адреса петиції: <strong>http://ua-sprava.rhcloud.com/petition/${petition.id}</strong>
+						</p>
 						<p>
 							До <strong><g:formatDate format="yyyy-MM-dd"
 									date="${petition.getSeachableDeadline()}" /></strong> днів слід набрати
@@ -156,11 +158,13 @@
 			<g:if test="!${petition.closedOn}">
 				<div id="message"></div>
 				<div id="error"></div>
-				<g:remoteLink controller="vote" params='[id:"${petition.id}"]'
+				<g:formRemote name="voteform" url="[controller: 'vote']"
 					update="[success: 'message', failure: 'error']">
-					<div class="btn-success btn" style="color: white;">
-						Підтримую!!!</div>
-				</g:remoteLink>
+					<recaptcha:recaptcha lang="uk" />
+					<input type="hidden" name="id" value="${petition.id}" />
+					<input type="submit" class="btn-success btn" style="color: white;"
+						value="Підтримую!!!" />
+				</g:formRemote>
 			</g:if>
 		</div>
 	</article>

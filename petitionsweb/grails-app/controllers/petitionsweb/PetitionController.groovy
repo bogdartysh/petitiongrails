@@ -28,23 +28,25 @@ class PetitionController {
 	def submit() {
 		if (!recaptchaService.verifyAnswer(session, request.getRemoteAddr(), params) ) {
 			params.put("validation", "petition.recaptcha.verification.failed")
-			render (view:"create", model:params)
+			redirect (uri:"/petition/create?addresseeId=" +params.addresseeId, model:params)
 		}
-
-		def existedPetition = Petition.findByTitle(params.title.toString().trim())
-		if (existedPetition) {
-			params.putAt("addressee",Addressee.read(params.addresseeId))
-			params.put("validation", "petition.title.exists")
-			params.put("existedPetition", existedPetition)
-			render (view:"create", model:params)
-		}
-
 		else {
-			Petition petition = new Petition(params)
-			petition.addressee = Addressee.read(params.addresseeId)
-			petition.requestDetails = requestDetailsDaoService.getPersistedRequestDetails(request)
-			petition.save()
-			render (view: "index", model:[petition: petition])
+
+			def existedPetition = Petition.findByTitle(params.title.toString().trim())
+			if (existedPetition) {
+				params.putAt("addressee",Addressee.read(params.addresseeId))
+				params.put("validation", "petition.title.exists")
+				params.put("existedPetition", existedPetition)
+				render (view:"create", model:params)
+			}
+
+			else {
+				Petition petition = new Petition(params)
+				petition.addressee = Addressee.read(params.addresseeId)
+				petition.requestDetails = requestDetailsDaoService.getPersistedRequestDetails(request)
+				petition.save()
+				redirect (action:"index", id: petition.id)
+			}
 		}
 	}
 }
