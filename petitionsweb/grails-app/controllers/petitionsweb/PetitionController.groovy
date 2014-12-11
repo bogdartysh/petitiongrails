@@ -5,13 +5,15 @@ import grails.converters.JSON
 import org.petitions.*
 import org.petitions.service.RequestDetailsDaoService
 import com.megatome.grails.RecaptchaService
-
+import grails.plugin.springsecurity.annotation.Secured
+import org.scribe.model.Token
 
 class PetitionController {
 
 	static allowedMethods = [submit:'POST']
 	RequestDetailsDaoService requestDetailsDaoService
 	RecaptchaService recaptchaService
+	def oauthService
 
 	def all() {
 		render Petition.list() as JSON
@@ -25,13 +27,13 @@ class PetitionController {
 		[addressee: Addressee.read(params.addresseeId)]
 	}
 
+	@Secured(['ROLE_ADMIN', 'ROLE_SUPERUSER', 'ROLE_USER'])
 	def submit() {
 		if (!recaptchaService.verifyAnswer(session, request.getRemoteAddr(), params) ) {
 			params.put("validation", "petition.recaptcha.verification.failed")
 			redirect (uri:"/petition/create?addresseeId=" +params.addresseeId, model:params)
 		}
-		else {
-
+		else {	
 			def existedPetition = Petition.findByTitle(params.title.toString().trim())
 			if (existedPetition) {
 				params.putAt("addressee",Addressee.read(params.addresseeId))
