@@ -95,7 +95,7 @@
 					</tbody>
 				</table>
 			</g:if>
-			
+
 			<g:if test="${closedpetitions?.size()  > 0}">
 				<p>Опрацьовані пропозиції:</p>
 				<table class="wiki-table" class="wiki-table" cellspacing="0"
@@ -124,7 +124,7 @@
 					</tbody>
 				</table>
 			</g:if>
-
+			<br />
 			<div align="center">
 				<g:link controller="Petition" action="create"
 					params="[addresseeId:addressee.id]" class="btn-success btn"

@@ -23,6 +23,8 @@ class PetitionController {
 	}
 
 	def submit() {
+		
+		render params as JSON
 		def existedPetition = Petition.findByTitle(params.title.toString().trim())
 		if (existedPetition) {
 			params.putAt("addressee",Addressee.read(params.addresseeId))

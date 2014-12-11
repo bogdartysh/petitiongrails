@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="${resource(dir: 'css', file: 'pdf.css')}"
 	type="text/css" media="screen, print" title="Style" charset="utf-8" />
 <g:javascript library="jquery" plugin="jquery" />
+
 </head>
 
 <body class="body">
@@ -219,15 +220,12 @@
 							<div class="form-error"></div>
 						</div>
 					</div>
+					<recaptcha:recaptcha>
+					
 					<input type="hidden" name="addresseeId" value="${addressee.id}" />
 					<div class="form-button-wrapper">
-						<div id="button-edit-submit" class="button-wrapper">
-							<input type="submit" name="next" id="edit-submit" value="Далі"
-								tabindex="3" class="form-submit button default-right-arrow"
-								style="display: block;"><img
-								class="floatRight formSubmitButtonAjaxLoader"
-								style="padding-right: 6px; margin-top: -2px; display: none;">
-						</div>
+						<input type="submit" name="submit" value="Далі"
+							class="btn-success btn" style="color: white;" />
 					</div>
 				</form>
 			</div>
