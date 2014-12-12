@@ -16,4 +16,5 @@ class RequestDetails {
 
 	String userAgent
 	String remoteAddr
+	Date createdOn = new Date()
 }

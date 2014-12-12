@@ -7,8 +7,8 @@
 </h2>
 </head>
 <body>
-	
-	<table   class="wiki-table" cellspacing="0" cellpadding="0" border="0">
+
+	<table class="wiki-table" cellspacing="0" cellpadding="0" border="0">
 		<tbody>
 			<tr class="table-odd">
 				<td>Ім'я</td>
@@ -22,12 +22,16 @@
 					${person.title }
 				</td>
 			</tr>
+			<tr>
+				<td>Дата початку участі в проекту</td>
+				<td>
+					${person.createdOn }
+				</td>
+			</tr>
 		</tbody>
 	</table>
-	<br/>
-	<p>
-	Взяв на себе відповідальність за обробку запитів до:
-	</p>
+	<br />
+	<p>Взяв на себе відповідальність за обробку запитів до:</p>
 	<table class="wiki-table" cellspacing="0" cellpadding="0" border="0">
 		<thead>
 			<tr>
