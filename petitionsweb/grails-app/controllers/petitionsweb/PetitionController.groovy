@@ -9,6 +9,7 @@ import grails.plugin.springsecurity.annotation.Secured
 import org.scribe.model.Token
 
 class PetitionController {
+	static defaultAction = "index"
 
 	static allowedMethods = [submit:'POST']
 	RequestDetailsDaoService requestDetailsDaoService

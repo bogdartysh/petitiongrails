@@ -119,8 +119,9 @@
 			</table>
 		</g:if>
 	<p>
-		Наразі проголосувало
-		${petition?.votes?.size() }.
+		Наразі набрано <strong>
+			${petition?.numberOfVotes }
+		</strong> голосів.
 	</p>
 
 

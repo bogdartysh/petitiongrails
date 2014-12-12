@@ -16,7 +16,7 @@ class Petition {
 		requestDetails nullable:true
 	}
 
-	static hasMany = [statistics: PetitionStatistic, comments: Comment, votes:Vote]
+	static hasMany = [comments: Comment, votes:Vote]
 
 	String title
 	String description
@@ -28,6 +28,7 @@ class Petition {
 	Date considerabilityThresholdReachedOn
 	Integer thresholdToBeSearchable = 100
 	Integer thresholdToBeConsidered = 3000
+	Integer numberOfVotes = 0
 	Date closedOn
 	Person closedBy
 	String closedDue

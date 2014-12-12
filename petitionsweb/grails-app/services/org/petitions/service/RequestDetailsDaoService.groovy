@@ -6,10 +6,13 @@ import org.petitions.*
 @Transactional
 class RequestDetailsDaoService {
 	def getPersistedRequestDetails(request) {
-		def oldRequestDetails = RequestDetails.findAll{ userAgent == request.getHeader("User-Agent") && remoteAddr == request.getRemoteAddr() && forwared =="" + request.getHeader("X-Forwarded-For")}
-			
+		def newRequestDetails = new RequestDetails(remoteAddr :  ("" + request.getHeader("X-Forwarded-For")  + request.getRemoteAddr()).encodeAsSHA256(),
+		userAgent : ("" + request.getHeader("User-Agent")).encodeAsSHA256Bytes())
+		def oldRequestDetails = RequestDetails.findAll{
+			userAgent == newRequestDetails.userAgent && remoteAddr == newRequestDetails.remoteAddr
+		}
+
 		if (!oldRequestDetails) {
-			def newRequestDetails = new RequestDetails(forwared :  "" + request.getHeader("X-Forwarded-For"), userAgent : "" + request.getHeader("User-Agent"), remoteAddr : "" + request.getRemoteAddr())
 			newRequestDetails.save()
 			return newRequestDetails
 		}

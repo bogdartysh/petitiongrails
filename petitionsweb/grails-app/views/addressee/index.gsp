@@ -22,6 +22,13 @@
 					</g:link></td>
 			</tr>
 			<tr>
+				<td>Дата початку участі в проекту</td>
+				<td>
+					<g:formatDate format="yyyy-MM-dd"
+								date="${addressee.createdOn}" />
+				</td>
+			</tr>
+			<tr>
 				<td>Опис</td>
 				<td>
 					${addressee.description}
@@ -30,17 +37,21 @@
 			<tr class="table-odd">
 				<td>Кількість поданих петицій, <br /> по яких іде голосування
 				</td>
-				<td><g:link controller="Addressee" action="votablepetitons"
-						params="[id:addressee.id]">
-						${addressee.petitions?.size()}
-					</g:link></td>
+				<td>
+					${addressee.petitions?.size()}
+				</td>
 			</tr>
 			<tr>
+				<td>Кількість петицій, що доступні у пошуку</td>
+				<td>
+					${addressee.openPetitionQty }
+				</td>
+			</tr>
+			<tr class="table-odd">
 				<td>Кількість розглянутих петицій</td>
-				<td><g:link controller="Addressee" action="resolvedpetitions"
-						params="[id:addressee.id]">
-						${addressee.workedOutPtetitionQty}
-					</g:link></td>
+				<td>
+					${addressee.workedOutPtetitionQty}
+				</td>
 			</tr>
 		</tbody>
 	</table>

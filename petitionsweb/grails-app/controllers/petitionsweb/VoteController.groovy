@@ -3,9 +3,9 @@ package petitionsweb
 import grails.converters.JSON
 
 import org.petitions.*
-import org.petitions.service.RequestDetailsDaoService;
 
-import com.megatome.grails.RecaptchaService;
+import com.megatome.grails.RecaptchaService
+import org.petitions.service.RequestDetailsDaoService
 
 class VoteController {
 	static defaultAction = "index"
@@ -27,12 +27,12 @@ class VoteController {
 
 			def vote = new Vote(petition: petition, requestDetails : requestDetailsDaoService.getPersistedRequestDetails(request))
 
-			if ( votes.any{v -> v.requestDetails.remoteAddr == vote.requestDetails.remoteAddr &&  v.requestDetails.forwared == vote.requestDetails.forwared}) {
+			if ( votes.any{v -> v.requestDetails.remoteAddr == vote.requestDetails.remoteAddr}) {
 				render "<p>Схоже ви вже голосували (є запис про Ваш ПК)</p>"
 			}
 			else {
 				vote.save()
-				render "<p>Дякуємо, ваш голос враховано</p>"
+				render "<p>Дякуємо, ваш голос буде враховано</p>"
 			}
 		}
 	}
