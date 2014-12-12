@@ -1,215 +1,140 @@
-<%@ page contentType="text/html;charset=UTF-8"%>
-<html lang="uk">
+<html>
 <head>
-<title><g:message code="default.title" /></title>
-<meta charset="UTF-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="robots" content="index, follow" />
-
-<link rel="stylesheet" href="${resource(dir: 'css', file: 'pdf.css')}"
-	type="text/css" media="screen, print" title="Style" charset="utf-8" />
-
-<g:javascript library="jquery" plugin="jquery" />
-
-<script src="https://apis.google.com/js/platform.js" async defer>
-  {lang: 'uk'}
-</script>
-</head>
-<body class="body">
-	<header>
-		<div id="navigation">
-			<ul>
-				<li><g:link uri="/">Головна</g:link></li>
-				<li><g:link uri="/about">Відкриті пропозиції</g:link></li>
-				<li><g:link uri="/about">Про проект</g:link></li>
-				<li><g:link uri="/contacts">Контакти</g:link></li>
-			</ul>
-		</div>
-		<div id="header">
-			<h1>
-				<g:link uri="/">
-					<div style="text-decoration: none;">
-						<g:message code="default.title" />
-					</div>
-				</g:link>
-			</h1>
-			<h2>
-				<g:link controller="Addressee" params="[id:petition.addressee.id]">
-					${petition.addressee?.title }
-				</g:link>
-			</h2>
-			<h2>
-				<g:link controller="Petition" params="[id:petition.id]">Пропозиція No.
+<meta name="layout" content="main" />
+<h2>
+	<g:link controller="Addressee" params="[id:petition.addressee.id]">
+		${petition.addressee?.title }
+	</g:link>
+</h2>
+<h2>
+	<g:link controller="Petition" params="[id:petition.id]">Пропозиція No.
 				${petition.id}
 				"<b> ${petition.title}
-					</b>"</g:link>
-			</h2>
-		</div>
-	</header>
-	<article>
-		<div id="main" class="corner all container">
-			<div class="breadcrumb">
-				<p>
-					Пропозиція No.&nbsp;<strong><g:link controller="Petition"
-							params="[id:petition.id]">
-							${petition.id}
-						</g:link> </strong> "<strong><g:link controller="Petition"
-							params="[id:petition.id]">
-							${petition.title}
-						</g:link></strong>" подана від <strong><g:formatDate format="yyyy-MM-dd"
-							date="${petition.createdOn}" /></strong>.
-				</p>
+		</b>"</g:link>
+</h2>
+</head>
+<body>
+	<div class="breadcrumb">
+		<p>
+			Пропозиція No.&nbsp;<strong><g:link controller="Petition"
+					params="[id:petition.id]">
+					${petition.id}
+				</g:link> </strong> "<strong><g:link controller="Petition"
+					params="[id:petition.id]">
+					${petition.title}
+				</g:link></strong>" подана від <strong><g:formatDate format="yyyy-MM-dd"
+					date="${petition.createdOn}" /></strong>.
+		</p>
+	</div>
+	<p>
+		Текст петиції:
+		<code>
+			<div class="code">
+				${petition.description }
 			</div>
+		</code>
+		<g:if test="${petition.publicUrl?.trim()}">
 			<p>
-				Текст петиції:
-				<code>
-					<div class="code">
-						${petition.description }
-					</div>
-				</code>
-				<g:if test="${petition.publicUrl?.trim()}">
-					<p>
-						Веб адреса на ресурс з більш детальною інформацією:
-						${petition.publicUrl}
-					</p>
-				</g:if>
-
-				<g:if test="${petition.closedOn}">
-					<blockquote class="warning">
-						<div class="status closed">Статус ЗАКРИТО</div>
-						<div>
-							Закрито
-							${petition.closedOn}, персона що закрила:
-							${petition.closedBy.title }
-							${petition.closedBy.firstName }
-							${ petition.closedBy.lastName }.
-
-						</div>
-						<div>
-							Причина закриття:
-							${petition.closedDue}
-						</div>
-					</blockquote>
-				</g:if>
-
-				<g:if test="${petition.seachabilityThresholdReachedOn}">
-					<p>
-						${petition.seachabilityThresholdReachedOn }
-						досягнуто ліміту голосів потрапляння до пошуку.
-					</p>
-				</g:if>
-				<g:else>
-					<blockquote class="note">
-						<p>Занадто мало голосів. Пропозиція не є доступною у пошуку.</p>
-						<p>Якщо ви підтримуєте цю пропозицію, будь ласка повідомте про
-							неї своїх друзів, або зацікавлені сторони.</p>
-						<p>
-							Адреса петиції: <strong>http://ua-sprava.rhcloud.com/petition/${petition.id}</strong>
-						</p>
-						<p>
-							До <strong><g:formatDate format="yyyy-MM-dd"
-									date="${petition.getSeachableDeadline()}" /></strong> днів слід набрати
-							<strong> ${petition.thresholdToBeSearchable}
-							</strong> голосів.
-						</p>
-					</blockquote>
-				</g:else>
-				<g:if test="${petition.considerabilityThresholdReachedOn}">
-					<p>
-						${petition.considerabilityThresholdReachedOn}
-						досягнуто ліміту голосів передачі до відповідальної особи.
-					</p>
-				</g:if>
-
-				<g:if test="${petition.comments }">
-					<p>Коментарі</p>
-					<table>
-						<thead>
-							<tr>
-								<th>No.</th>
-								<th>Автор</th>
-								<th>Дата</th>
-								<th>Коментар</th>
-							</tr>
-						</thead>
-						<tbody>
-							<g:each in="${petition.comments}" var="comment">
-								<tr>
-									<td>
-										${comment.id}
-									</td>
-									<td>
-										${comment.createdBy}
-									</td>
-									<td>
-										${comment.createdOn}
-									</td>
-									<td>
-										${comment.text}
-									</td>
-								</tr>
-							</g:each>
-						</tbody>
-					</table>
-				</g:if>
-			<p>
-				Наразі проголосувало
-				${petition?.votes?.size() }.
+				Веб адреса на ресурс з більш детальною інформацією:
+				${petition.publicUrl}
 			</p>
+		</g:if>
+
+		<g:if test="${petition.closedOn}">
+			<blockquote class="warning">
+				<div class="status closed">Статус ЗАКРИТО</div>
+				<div>
+					Закрито
+					${petition.closedOn}, персона що закрила:
+					${petition.closedBy.title }
+					${petition.closedBy.firstName }
+					${ petition.closedBy.lastName }.
+
+				</div>
+				<div>
+					Причина закриття:
+					${petition.closedDue}
+				</div>
+			</blockquote>
+		</g:if>
+
+		<g:if test="${petition.seachabilityThresholdReachedOn}">
+			<p>
+				${petition.seachabilityThresholdReachedOn }
+				досягнуто ліміту голосів потрапляння до пошуку.
+			</p>
+		</g:if>
+		<g:else>
+			<blockquote class="note">
+				<p>Занадто мало голосів. Пропозиція не є доступною у пошуку.</p>
+				<p>Якщо ви підтримуєте цю пропозицію, будь ласка повідомте про
+					неї своїх друзів, або зацікавлені сторони.</p>
+				<p>
+					Адреса петиції: <strong>http://ua-sprava.rhcloud.com/petition/${petition.id}</strong>
+				</p>
+				<p>
+					До <strong><g:formatDate format="yyyy-MM-dd"
+							date="${petition.getSeachableDeadline()}" /></strong> днів слід набрати <strong>
+						${petition.thresholdToBeSearchable}
+					</strong> голосів.
+				</p>
+			</blockquote>
+		</g:else>
+		<g:if test="${petition.considerabilityThresholdReachedOn}">
+			<p>
+				${petition.considerabilityThresholdReachedOn}
+				досягнуто ліміту голосів передачі до відповідальної особи.
+			</p>
+		</g:if>
+
+		<g:if test="${petition.comments }">
+			<p>Коментарі</p>
+			<table>
+				<thead>
+					<tr>
+						<th>No.</th>
+						<th>Автор</th>
+						<th>Дата</th>
+						<th>Коментар</th>
+					</tr>
+				</thead>
+				<tbody>
+					<g:each in="${petition.comments}" var="comment">
+						<tr>
+							<td>
+								${comment.id}
+							</td>
+							<td>
+								${comment.createdBy}
+							</td>
+							<td>
+								${comment.createdOn}
+							</td>
+							<td>
+								${comment.text}
+							</td>
+						</tr>
+					</g:each>
+				</tbody>
+			</table>
+		</g:if>
+	<p>
+		Наразі проголосувало
+		${petition?.votes?.size() }.
+	</p>
 
 
 
-			<g:if test="!${petition.closedOn}">
-				<div id="message"></div>
-				<div id="error"></div>
-				<g:formRemote name="voteform" url="[controller: 'vote']"
-					update="[success: 'message', failure: 'error']">
-					<recaptcha:recaptcha lang="uk" />
-					<input type="hidden" name="id" value="${petition.id}" />
-					<input type="submit" class="btn-success btn" style="color: white;"
-						value="Підтримую!!!" />
-				</g:formRemote>
-			</g:if>
-		</div>
-	</article>
-	<footer>
-		<div id="footer">Co. UA Справа</div>
-		<div class="like">
-			<span class="facebok-like">
-				<div id="fb-root"></div> <script>
-					(function(d, s, id) {
-						var js, fjs = d.getElementsByTagName(s)[0];
-						if (d.getElementById(id))
-							return;
-						js = d.createElement(s);
-						js.id = id;
-						js.src = "//connect.facebook.net/en_EN/all.js#xfbml=1&appId=186071791550679";
-						fjs.parentNode.insertBefore(js, fjs);
-					}(document, 'script', 'facebook-jssdk'));
-				</script>
-				<div class="fb-like" data-href="http://ua-sprava.rhcloud.com"
-					data-send="true" data-width="450" data-show-faces="true"></div>
-			</span> <span class="twitter-like"> <a
-				href="https://twitter.com/share" class="twitter-share-button"
-				data-via="bogdartysh">Tweet</a> <script>
-					!function(d, s, id) {
-						var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/
-								.test(d.location) ? 'http' : 'https';
-						if (!d.getElementById(id)) {
-							js = d.createElement(s);
-							js.id = id;
-							js.src = p + '://platform.twitter.com/widgets.js';
-							fjs.parentNode.insertBefore(js, fjs);
-						}
-					}(document, 'script', 'twitter-wjs');
-				</script>
-			</span> <span class="google-like"> <div class="g-plusone" data-size="small" data-annotation="inline" data-width="300"></div>
-			</span> <span> <script src="//platform.linkedin.com/in.js"
-					type="text/javascript" defer>
-				lang: uk_UA
-			</script> <script type="IN/Share" data-counter="right"></script>
-			</span>
-			</div>
-	</footer>
+	<g:if test="!${petition.closedOn}">
+		<div id="message"></div>
+		<div id="error"></div>
+		<g:formRemote name="voteform" url="[controller: 'vote']"
+			update="[success: 'message', failure: 'error']">
+			<recaptcha:recaptcha lang="uk" />
+			<input type="hidden" name="id" value="${petition.id}" />
+			<input type="submit" class="btn-success btn" style="color: white;"
+				value="Підтримую!!!" />
+		</g:formRemote>
+	</g:if>
 </body>
 </html>
