@@ -5,6 +5,8 @@ class UrlMappings {
 			} }
 
 		"/"( controller:'Default', action:'index' )
+		"/about"(view:'/about')
+		"/contacts"(view:'/contacts')
 		"500"(view:'/error')
 		"404"(view:'/error')
 	}

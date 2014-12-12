@@ -28,13 +28,23 @@ class PetitionController {
 		[addressee: Addressee.read(params.addresseeId)]
 	}
 
-	@Secured(['ROLE_ADMIN', 'ROLE_SUPERUSER', 'ROLE_USER'])
+	def open() {
+		[petitions: Petition.findAllByClosedOnIsNullAndConsiderabilityThresholdReachedOnIsNotNull(),
+			qtynotsearchable: Petition.findAllByClosedOnIsNullAndConsiderabilityThresholdReachedOnIsNull().size()
+		]
+	}
+
+	@Secured([
+		'ROLE_ADMIN',
+		'ROLE_SUPERUSER',
+		'ROLE_USER'
+	])
 	def submit() {
 		if (!recaptchaService.verifyAnswer(session, request.getRemoteAddr(), params) ) {
 			params.put("validation", "petition.recaptcha.verification.failed")
 			redirect (uri:"/petition/create?addresseeId=" +params.addresseeId, model:params)
 		}
-		else {	
+		else {
 			def existedPetition = Petition.findByTitle(params.title.toString().trim())
 			if (existedPetition) {
 				params.putAt("addressee",Addressee.read(params.addresseeId))

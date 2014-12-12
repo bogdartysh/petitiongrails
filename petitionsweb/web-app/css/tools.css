@@ -71,11 +71,24 @@ strong {
   font-weight: bold;
 }
 
-form, fieldset {
+form,  {
   margin: 0;
   padding: 0;
   border: none;
 }
+
+fieldset {
+  border:1px solid green;
+  padding: 1em;
+  font:80%/1 sans-serif;
+}
+legend {
+  padding: 0.2em 0.5em;
+  border:1px solid green;
+  color:green;
+  font-size:90%;
+  text-align:right;
+  }
 
 input, button, select {
   vertical-align: middle;

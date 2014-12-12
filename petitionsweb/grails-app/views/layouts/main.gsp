@@ -31,7 +31,8 @@
 		<div id="navigation">
 			<ul>
 				<li><g:link uri="/">Головна</g:link></li>
-				<li><g:link uri="/about">Відкриті пропозиції</g:link></li>
+				<li><g:link controller="petition" action="open">Відкриті пропозиції</g:link></li>
+				<li><g:link uri="/">Додати пропозицію</g:link></li>
 				<li><g:link uri="/about">Про проект</g:link></li>
 				<li><g:link uri="/contacts">Контакти</g:link></li>
 			</ul>
@@ -53,6 +54,7 @@
 		</div>
 	</article>
 	<footer>
+	<br/>
 		<div class="like">
 			<span class="facebok-like">
 				<div id="fb-root"></div> <script>

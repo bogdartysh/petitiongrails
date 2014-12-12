@@ -39,7 +39,7 @@
 		<form accept-charset="UTF-8" method="post" name="new_petition"
 			action="submit">
 			<fieldset>
-				<legend>Петиція</legend>
+				<legend>Пропозиція</legend>
 				<p>Просимо заповнити петицію:</p>
 				<div class="form-form-element-wrapper">
 					<div class="form-item form-item-textfield "
@@ -83,8 +83,7 @@
 					</div>
 				</div>
 			</fieldset>
-
-
+			<br />
 			<fieldset class="form-element-type-fieldset" id="name">
 				<legend>Ваше ім'я</legend>
 				<p>Просимо надати Ваше повне ім'я (за бажанням):</p>
@@ -124,7 +123,7 @@
 					</div>
 				</div>
 			</fieldset>
-
+			<br />
 			<fieldset>
 				<legend>Контактні дані</legend>
 				<p>Просимо надати Ваші контактні дані (за бажанням):</p>
@@ -182,7 +181,7 @@
 				</div>
 			</fieldset>
 
-
+			<br />
 			<div class="form-form-element-wrapper">
 				<div class="form-item form-item-checkbox">
 					<div class="form-input checkbox">
@@ -194,11 +193,11 @@
 					<div class="form-error"></div>
 				</div>
 			</div>
-			
+
 			<recaptcha:recaptcha lang="ukr" />
 
 			<input type="hidden" name="addresseeId" value="${addressee.id}" />
-			<div class="form-button-wrapper">
+			<div class="form-button-wrapper" style="text-align: center;">
 				<input type="submit" name="submit" value="Далі"
 					class="btn-success btn" style="color: white;" />
 			</div>

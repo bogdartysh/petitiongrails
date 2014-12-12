@@ -7,7 +7,7 @@ class Person {
 	static constraints = {
 		email email:true, blank:false
 		personalPage url:true, blank: false, nullable:true
-		imageUrl url:true, blank:true, nullable:false
+		imageUrl url:true, blank:true, nullable:true
 		firstName blank:false, size: 3..50
 		secondName blank:true, nullable:true, size: 3..50
 		lastName blank:false, size: 3..50

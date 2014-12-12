@@ -24,25 +24,10 @@ class UpdatePetitionStatisticsJob {
 					vote.save()
 				}
 			}
-			
+
 			it.numberOfVotes += addVotes / 100
 			it.save()
 
 		}
-
-		//TODO that is just POC, should be refactored in Prod
-		/*
-		 use (TimeCategory) {
-		 Date voteToDelDates = current - 31.days
-		 Vote.findAllByProcessedOnLessThen(voteToDelDates).each { vote ->
-		 vote.delete()
-		 }
-		 RequestDetails.findAllByCreatedOnLessThen(voteToDelDates).each { req ->
-		 if (!Petition.findAllByRequestDetails(req, readOnly) && !Vote.findAllByRequestDetails(req, readOnly)) {
-		 req.delete()
-		 }
-		 }
-		 }
-		 */
 	}
 }
