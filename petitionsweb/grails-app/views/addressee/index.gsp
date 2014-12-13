@@ -35,20 +35,20 @@
 				</td>
 			</tr>
 			<tr class="table-odd">
-				<td>Кількість поданих петицій, <br /> по яких іде голосування
+				<td>Кількість поданих пропозицій, <br /> по яких іде голосування
 				</td>
 				<td>
 					${addressee.petitions?.size()}
 				</td>
 			</tr>
 			<tr>
-				<td>Кількість петицій, що доступні у пошуку</td>
+				<td>Кількість пропозицій, що доступні у пошуку (оприлюднені)</td>
 				<td>
 					${addressee.openPetitionQty }
 				</td>
 			</tr>
 			<tr class="table-odd">
-				<td>Кількість розглянутих петицій</td>
+				<td>Кількість розглянутих пророзицій</td>
 				<td>
 					${addressee.workedOutPtetitionQty}
 				</td>
@@ -125,7 +125,7 @@
 	<div align="center">
 		<g:link controller="Petition" action="create"
 			params="[addresseeId:addressee.id]" class="btn-success btn"
-			style="color: white;">Додати петицію</g:link>
+			style="color: white;">Додати пропозицію</g:link>
 	</div>
 </body>
 </html>

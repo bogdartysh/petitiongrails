@@ -40,7 +40,7 @@
 			action="submit">
 			<fieldset>
 				<legend>Пропозиція</legend>
-				<p>Просимо заповнити петицію:</p>
+				<p>Просимо заповнити:</p>
 				<div class="form-form-element-wrapper">
 					<div class="form-item form-item-textfield "
 						id="edit-middle-name-wrapper">
