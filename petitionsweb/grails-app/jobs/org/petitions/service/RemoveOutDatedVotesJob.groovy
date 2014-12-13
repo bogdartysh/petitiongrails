@@ -19,7 +19,7 @@ class RemoveOutDatedVotesJob {
 
 	def execute() {
 		use (TimeCategory) {
-			Date voteToDelDates = new Date()// - 31.days
+			Date voteToDelDates = new Date() - 31.days
 			def reqsToCheck = [] as Set
 			org.petitions.Vote.findAllByProcessedOnLessThan(voteToDelDates).each { vote ->
 				reqsToCheck.add(vote.requestDetails)
