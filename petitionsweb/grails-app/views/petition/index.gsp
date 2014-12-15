@@ -119,8 +119,7 @@
 			</table>
 		</g:if>
 	<p>
-		Наразі набрано <strong>
-			${petition?.numberOfVotes }
+		Наразі набрано <strong> ${petition?.numberOfVotes }
 		</strong> голосів.
 	</p>
 
@@ -133,8 +132,10 @@
 			update="[success: 'message', failure: 'error']">
 			<recaptcha:recaptcha lang="uk" />
 			<input type="hidden" name="id" value="${petition.id}" />
-			<input type="submit" class="btn-success btn" style="text-align: center;color: white;"
-				value="Підтримую!!!" />
+			<center>
+				<input type="submit" class="btn-success btn"
+					style="text-align: center; color: white;" value="Підтримую!!!" />
+			</center>
 		</g:formRemote>
 	</g:if>
 </body>
