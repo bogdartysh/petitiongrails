@@ -8,6 +8,22 @@
 </h2>
 </head>
 <body>
+	<script>
+		$(function() {
+			// Set cursor to pointer and add click function
+			$("legend").css("cursor", "pointer").click(function() {
+				var legend = $(this);
+				var value = $(this).children("span").html();
+				if (value == "[-]")
+					value = "[+]";
+				else
+					value = "[-]";
+				$(this).siblings().slideToggle("slow", function() {
+					legend.children("span").html(value);
+				});
+			});
+		});
+	</script>
 	<p>
 		Ви подаєте петицію до
 		<g:link controller="Addressee" params="[id:addressee.id]">
@@ -39,7 +55,9 @@
 		<form accept-charset="UTF-8" method="post" name="new_petition"
 			action="submit">
 			<fieldset>
-				<legend>Пропозиція</legend>
+				<legend>
+					Пропозиція <span>[-]</span>
+				</legend>
 				<p>Просимо заповнити:</p>
 				<div class="form-form-element-wrapper">
 					<div class="form-item form-item-textfield "
@@ -85,97 +103,105 @@
 			</fieldset>
 			<br />
 			<fieldset class="form-element-type-fieldset" id="name">
-				<legend>Ваше ім'я</legend>
-				<p>Просимо надати Ваше повне ім'я (за бажанням):</p>
-				<div class="form-form-element-wrapper">
-					<div class="form-item form-item-textfield">
-						<div class="form-label">
-							<label for="edit-first-name">Ім'я </label>
-						</div>
-						<div class="form-input textfield">
-							<input type="text" name="firstName" size="100"
-								class="form-text required form-element-type-textfield" />
+				<legend>
+					Ваше ім'я та прізвище&nbsp;(опціонально)<span>[+]</span>
+				</legend>
+				<div style="display: none;">
+					<p>Просимо надати Ваше повне ім'я (за бажанням):</p>
+					<div class="form-form-element-wrapper">
+						<div class="form-item form-item-textfield">
+							<div class="form-label">
+								<label for="edit-first-name">Ім'я </label>
+							</div>
+							<div class="form-input textfield">
+								<input type="text" name="firstName" size="100"
+									class="form-text required form-element-type-textfield" />
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<div class="form-form-element-wrapper">
-					<div class="form-item form-item-textfield">
-						<div class="form-label">
-							<label for="edit-first-name">По-батькові</label>
-						</div>
-						<div class="form-input textfield">
-							<g:textField name="secondName" size="100"
-								class="form-text required form-element-type-textfield" />
+					<div class="form-form-element-wrapper">
+						<div class="form-item form-item-textfield">
+							<div class="form-label">
+								<label for="edit-first-name">По-батькові</label>
+							</div>
+							<div class="form-input textfield">
+								<g:textField name="secondName" size="100"
+									class="form-text required form-element-type-textfield" />
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="form-form-element-wrapper">
-					<div class="form-item form-item-textfield "
-						id="edit-middle-name-wrapper">
-						<div class="form-label">
-							<label for="edit-middle-name">Прізвище</label>
-						</div>
-						<div class="form-input textfield">
-							<input type="text" name="lastName" size="100"
-								class="form-text required form-element-type-textfield" />
+					<div class="form-form-element-wrapper">
+						<div class="form-item form-item-textfield "
+							id="edit-middle-name-wrapper">
+							<div class="form-label">
+								<label for="edit-middle-name">Прізвище</label>
+							</div>
+							<div class="form-input textfield">
+								<input type="text" name="lastName" size="100"
+									class="form-text required form-element-type-textfield" />
+							</div>
 						</div>
 					</div>
 				</div>
 			</fieldset>
 			<br />
 			<fieldset>
-				<legend>Контактні дані</legend>
-				<p>Просимо надати Ваші контактні дані (за бажанням):</p>
-				<div class="form-form-element-wrapper">
-					<div class="form-item form-item-textfield "
-						id="edit-middle-name-wrapper">
-						<div class="form-label">
-							<label for="edit-middle-name">Email</label>
-						</div>
-						<div class="form-input textfield">
-							<input id="email" name="email" type="email" size="100"
-								class="form-text required form-element-type-textfield" />
-						</div>
-					</div>
-				</div>
-
-				<div class="form-form-element-wrapper">
-					<div class="form-item form-item-textfield "
-						id="edit-middle-name-wrapper">
-						<div class="form-label">
-							<label for="edit-middle-name">Телефон</label>
-						</div>
-						<div class="form-input textfield">
-							<input id="phone" name="phone" type="tel" size="20"
-								class="form-text required form-element-type-textfield" />
+				<legend>
+					Ваші контактні дані&nbsp;(опціонально) <span>[+]</span>
+				</legend>
+				<div style="display: none;">
+					<p>Просимо надати Ваші контактні дані (за бажанням):</p>
+					<div class="form-form-element-wrapper">
+						<div class="form-item form-item-textfield "
+							id="edit-middle-name-wrapper">
+							<div class="form-label">
+								<label for="edit-middle-name">Email</label>
+							</div>
+							<div class="form-input textfield">
+								<input id="email" name="email" type="email" size="100"
+									class="form-text required form-element-type-textfield" />
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<div class="form-form-element-wrapper">
-					<div class="form-item form-item-textfield "
-						id="edit-middle-name-wrapper">
-						<div class="form-label">
-							<label for="edit-middle-name">Персональний сайт</label>
-						</div>
-						<div class="form-input textfield">
-							<input id="personalPage" name="personalPage" type="url"
-								size="100"
-								class="form-text required form-element-type-textfield" />
+					<div class="form-form-element-wrapper">
+						<div class="form-item form-item-textfield "
+							id="edit-middle-name-wrapper">
+							<div class="form-label">
+								<label for="edit-middle-name">Телефон</label>
+							</div>
+							<div class="form-input textfield">
+								<input id="phone" name="phone" type="tel" size="20"
+									class="form-text required form-element-type-textfield" />
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<div class="form-form-element-wrapper">
-					<div class="form-item form-item-textfield "
-						id="edit-middle-name-wrapper">
-						<div class="form-label">
-							<label for="edit-middle-name">Поштова адреса</label>
+					<div class="form-form-element-wrapper">
+						<div class="form-item form-item-textfield "
+							id="edit-middle-name-wrapper">
+							<div class="form-label">
+								<label for="edit-middle-name">Персональний сайт</label>
+							</div>
+							<div class="form-input textfield">
+								<input id="personalPage" name="personalPage" type="url"
+									size="100"
+									class="form-text required form-element-type-textfield" />
+							</div>
 						</div>
-						<div class="form-input textfield">
-							<input type="text" name="postalAddress" size="100"
-								class="form-text required form-element-type-textfield" />
+					</div>
+
+					<div class="form-form-element-wrapper">
+						<div class="form-item form-item-textfield "
+							id="edit-middle-name-wrapper">
+							<div class="form-label">
+								<label for="edit-middle-name">Поштова адреса</label>
+							</div>
+							<div class="form-input textfield">
+								<input type="text" name="postalAddress" size="100"
+									class="form-text required form-element-type-textfield" />
+							</div>
 						</div>
 					</div>
 				</div>
@@ -198,7 +224,7 @@
 
 			<input type="hidden" name="addresseeId" value="${addressee.id}" />
 			<div class="form-button-wrapper" style="text-align: center;">
-				<input type="submit" name="submit" value="Далі"
+				<input type="submit" name="submit" value="Далі&nbsp;>>"
 					class="btn-success btn" style="color: white;" />
 			</div>
 		</form>

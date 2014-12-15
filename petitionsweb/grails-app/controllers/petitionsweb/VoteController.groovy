@@ -17,7 +17,7 @@ class VoteController {
 	def index() {
 		if (!recaptchaService.verifyAnswer(session, request.getRemoteAddr(), params) ) {
 			params.put("validation", "petition.recaptcha.verification.failed")
-			render "<p>Перевірте капчу</p>"
+			render "<p class='warning'>Перевірте капчу</p>"
 		}
 
 		else{
@@ -28,11 +28,11 @@ class VoteController {
 			def vote = new Vote(petition: petition, requestDetails : requestDetailsDaoService.getPersistedRequestDetails(request))
 
 			if ( votes.any{v -> v.requestDetails.remoteAddr == vote.requestDetails.remoteAddr}) {
-				render "<p>Схоже ви вже голосували (є запис про Ваш ПК)</p>"
+				render "<p class='warning'>Схоже ви вже голосували (є запис про Ваш ПК)</p>"
 			}
 			else {
 				vote.save()
-				render "<p>Дякуємо, ваш голос буде враховано</p>"
+				render "<p class='note'>Дякуємо, ваш голос буде враховано</p>"
 			}
 		}
 	}

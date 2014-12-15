@@ -126,14 +126,14 @@
 
 
 
-	<g:if test="!${petition.closedOn}">
+	<g:if test="!${petition.closedOn}" style="text-align: center;">
 		<div id="message"></div>
 		<div id="error"></div>
 		<g:formRemote name="voteform" url="[controller: 'vote']"
 			update="[success: 'message', failure: 'error']">
 			<recaptcha:recaptcha lang="uk" />
 			<input type="hidden" name="id" value="${petition.id}" />
-			<input type="submit" class="btn-success btn" style="color: white;"
+			<input type="submit" class="btn-success btn" style="text-align: center;color: white;"
 				value="Підтримую!!!" />
 		</g:formRemote>
 	</g:if>
