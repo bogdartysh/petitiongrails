@@ -4,4 +4,5 @@ petitionsweb/.project
 petitionsweb/.settings/
 petitionsweb/devDb.h2.db
 petitionsweb/devDb.trace.db
-petitionsweb/target/
+petitionsweb/devDb.*
+petitionsweb/target/sta
