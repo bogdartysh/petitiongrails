@@ -20,7 +20,7 @@ class RemoveOutDatedNotStartedPetitionsJob {
 			Date voteToDelDates = new Date() - 31.days
 			org.petitions.Petition.findAllByClosedOnIsNullAndConsiderabilityThresholdReachedOnIsNull().each { pet ->
 				if (pet.numberOfVotes < pet.thresholdToBeConsidered &&
-				pet.createdOn < pet.voteToDelDates ) {
+				pet.createdOn < voteToDelDates ) {
 					pet.closedOn = new Date()
 					pet.closedDue = "too.few.votes"
 					pet.save()

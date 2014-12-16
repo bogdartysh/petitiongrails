@@ -121,32 +121,71 @@
 	<p>
 		Наразі набрано <strong> ${petition?.numberOfVotes }
 		</strong> голосів.
+	<table class="wiki-table" cellspacing="0" cellpadding="0" border="0">
+		<thead>
+			<tr>
+				<th>Метод голосування</th>
+				<th>Кількість голосів</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr>
+				<td>За IP</td>
+				<td align="center">
+					${petition?.numberOfVotes }
+				</td>
+			</tr>
+			<tr>
+				<td>У соц. мережі</td>
+				<td align="center">
+					${petition?.numberOfShares }
+				</td>
+			</tr>
+			<tr class="table-odd">
+				<td><strong>Загалом</strong></td>
+				<td align="center"><strong> <g:if
+							test="${petition?.numberOfShares }">
+							${petition?.numberOfVotes  + petition?.numberOfShares }
+						</g:if> <g:else>
+						${petition?.numberOfVotes}
+					</g:else>
+				</strong></td>
+			</tr>
+		</tbody>
+	</table>
 	</p>
 
 
 
 	<g:if test="!${petition.closedOn}" style="text-align: center;">
-		<div id="vote">
-			<div id="message"></div>
-			<div id="error"></div>
-			<g:formRemote name="voteform" url="[controller: 'vote']"
-				update="[success: 'message', failure: 'error']">
-				<recaptcha:recaptcha lang="uk" />
-				<input type="hidden" name="id" value="${petition.id}" />
-				<center>
-					<input type="submit" class="btn-success btn"
-						style="text-align: center; color: white;" value="Підтримую!!!" />
-				</center>
-			</g:formRemote>
-		</div>
-		<div id="shares">
-			<script type="text/javascript" src="//yandex.st/share/share.js"
-				charset="utf-8" async="true"></script>
-			<div style="float: left;" class="yashare-auto-init"
-				data-yashareL10n="uk"
-				data-yashareQuickServices="vkontakte,facebook,twitter,gplus"
-				data-yashareTheme="counter"></div>
-		</div>
+		<p>Ви можете проголосувати за пропозицію або розшарити її в соц.
+			мережах (буде враховано)</p>
+		<center>
+			<div id="vote">
+				<div id="message"></div>
+				<div id="error"></div>
+				<g:formRemote name="voteform" url="[controller: 'vote']"
+					update="[success: 'message', failure: 'error']">
+					<recaptcha:recaptcha lang="uk" />
+					<input type="hidden" name="id" value="${petition.id}" />
+					<center>
+						<input type="submit" class="btn-success btn"
+							style="text-align: center; color: white;" value="Підтримую!!!" />
+					</center>
+				</g:formRemote>
+			</div>
+			<br />
+			<div id="shares">
+				<script type="text/javascript" src="//yandex.st/share/share.js"
+					charset="utf-8" async="true"></script>
+				<div style="float: center;" class="yashare-auto-init"
+					data-yashareL10n="uk"
+					data-yashareQuickServices="vkontakte,facebook,twitter,gplus"
+					data-yashareTheme="counter"></div>
+			</div>
+			<br /> <br />
+		</center>
 	</g:if>
 </body>
 </html>

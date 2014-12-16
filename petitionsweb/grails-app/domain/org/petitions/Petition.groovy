@@ -14,6 +14,7 @@ class Petition {
 		closedDue nullable: true, blank: true
 		closedBy nullable:true
 		requestDetails nullable:true
+		numberOfShares nullable:true
 	}
 
 	static hasMany = [comments: Comment, votes:Vote]
@@ -29,6 +30,7 @@ class Petition {
 	Integer thresholdToBeSearchable = 100
 	Integer thresholdToBeConsidered = 3000
 	Integer numberOfVotes = 0
+	Integer numberOfShares = 0
 	Date closedOn
 	Person closedBy
 	String closedDue
