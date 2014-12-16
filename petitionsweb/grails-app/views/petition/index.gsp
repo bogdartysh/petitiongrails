@@ -144,12 +144,8 @@
 			</tr>
 			<tr class="table-odd">
 				<td><strong>Загалом</strong></td>
-				<td align="center"><strong> <g:if
-							test="${petition?.numberOfShares }">
+				<td align="center"><strong>
 							${petition?.numberOfVotes  + petition?.numberOfShares }
-						</g:if> <g:else>
-						${petition?.numberOfVotes}
-					</g:else>
 				</strong></td>
 			</tr>
 		</tbody>

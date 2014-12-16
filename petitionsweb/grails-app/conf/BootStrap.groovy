@@ -20,6 +20,10 @@ class BootStrap {
 
 
 		/*	*/
+		Petition.list().each { it ->
+			it.numberOfVotes = 0
+			it.save()
+		}
 	}
 	def destroy = {
 	}
