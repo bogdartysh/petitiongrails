@@ -54,7 +54,7 @@
 		</div>
 	</article>
 	<footer>
-	<br/>
+		<br />
 		<div class="like">
 			<span class="facebok-like">
 				<div id="fb-root"></div> <script>
@@ -87,10 +87,6 @@
 			</span> <span class="google-like">
 				<div class="g-plusone" data-size="small" data-annotation="inline"
 					data-width="300"></div>
-			</span> <span> <script src="//platform.linkedin.com/in.js"
-					type="text/javascript" defer>
-				lang: uk_UA
-			</script> <script type="IN/Share" data-counter="right"></script>
 			</span>
 		</div>
 		<div id="footer">Co. UA Справа</div>
