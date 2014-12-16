@@ -27,7 +27,7 @@ class UpdatePetitionStatisticsJob {
 			}
 
 			it.numberOfVotes += addVotes / 100 
-			it.numberOfShares = likeCounterService.getSharesQty(it)
+			likeCounterService.updateSharesQty(it)
 			it.save()
 
 		}
