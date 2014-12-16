@@ -15,7 +15,7 @@ class BootStrap {
 		mdn.save(flush:true, failOnError:true)
 		Person bogdan = new Person(firstName:"Богдан", secondName:"Андрійович", lastName: "Артюшенко", email:"bogdan.artyushenko@facebook.com", title:"к.т.н.", personalPage:"https://facebook.com/bogdan.artyushenko")
 		bogdan.save(flush:true, failOnError:true)
-		Addressee site= new Addressee(responsiblePerson: bogdan, title: "Сайт онлайн пропозицій щодо вдосконалення законодавства до Верховної Ради України.", description: "Ви можете подати Ваші пропозиції щодо власне сайту. Вони проходитимуть звичайну процедуру.", corporateWebAddress:"http://ua-sprava.rhcloud.com", thresholdToBeSearchable:50, thresholdToBeConsidered:100F)
+		Addressee site= new Addressee(responsiblePerson: bogdan, title: "Сайт онлайн пропозицій щодо вдосконалення законодавства до Верховної Ради України.", description: "Ви можете подати Ваші пропозиції щодо власне сайту. Вони проходитимуть звичайну процедуру.", corporateWebAddress:"http://ua-sprava.rhcloud.com", thresholdToBeSearchable:5, thresholdToBeConsidered:100)
 		site.save(flush:true, failOnError:true)
 
 

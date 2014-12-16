@@ -10,7 +10,7 @@ class UpdatePetitionStatisticsJob {
 	static triggers = { simple repeatInterval: 5000l // execute job once in 5 seconds
 	}
 
-	LikeCounterService likeCounterService
+	
 	def sessionRequired = false
 	def concurrent = false
 
@@ -27,9 +27,7 @@ class UpdatePetitionStatisticsJob {
 			}
 
 			it.numberOfVotes += addVotes / 100 
-			likeCounterService.updateSharesQty(it)
 			it.save()
-
 		}
 	}
 }
