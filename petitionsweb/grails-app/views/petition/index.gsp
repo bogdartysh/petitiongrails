@@ -126,17 +126,27 @@
 
 
 	<g:if test="!${petition.closedOn}" style="text-align: center;">
-		<div id="message"></div>
-		<div id="error"></div>
-		<g:formRemote name="voteform" url="[controller: 'vote']"
-			update="[success: 'message', failure: 'error']">
-			<recaptcha:recaptcha lang="uk" />
-			<input type="hidden" name="id" value="${petition.id}" />
-			<center>
-				<input type="submit" class="btn-success btn"
-					style="text-align: center; color: white;" value="Підтримую!!!" />
-			</center>
-		</g:formRemote>
+		<div id="vote">
+			<div id="message"></div>
+			<div id="error"></div>
+			<g:formRemote name="voteform" url="[controller: 'vote']"
+				update="[success: 'message', failure: 'error']">
+				<recaptcha:recaptcha lang="uk" />
+				<input type="hidden" name="id" value="${petition.id}" />
+				<center>
+					<input type="submit" class="btn-success btn"
+						style="text-align: center; color: white;" value="Підтримую!!!" />
+				</center>
+			</g:formRemote>
+		</div>
+		<div id="shares">
+			<script type="text/javascript" src="//yandex.st/share/share.js"
+				charset="utf-8" async="true"></script>
+			<div style="float: left;" class="yashare-auto-init"
+				data-yashareL10n="uk"
+				data-yashareQuickServices="vkontakte,facebook,twitter,gplus"
+				data-yashareTheme="counter"></div>
+		</div>
 	</g:if>
 </body>
 </html>
