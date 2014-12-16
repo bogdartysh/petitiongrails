@@ -10,8 +10,9 @@ class LikeCounterService {
 	//based on http://stackoverflow.com/questions/5699270/how-to-get-share-counts-using-graph-api/19119580#19119580 and http://stackoverflow.com/questions/8853342/how-to-get-google-1-count-for-current-page-in-php
 	def getSharesQty(Petition petition) {
 		def url = "ua-sprava.rhcloud.com/petition/index/?id=" + petition.id
-		def respFB = rest.get( "https://api.facebook.com/method/links.getStats?format=json&urls=" + url)		
-		respFB.json.total_count
+		def respFB = rest.get( "https://api.facebook.com/method/links.getStats?format=json&urls=" + url)	
+		print respFB.json
+		respFB.json.total_count[0]
 
 
 
