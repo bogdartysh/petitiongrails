@@ -33,21 +33,23 @@
 	</p>
 
 	<g:if test="${validation?.trim()}">
-		<p>Вибачте, але Вам доведеться перевірити дані:</p>
-		<ul>
-			<g:if test="${validation == 'petition.title.exists'}">
-				<li>петиція <g:link controller="Petition"
-						params="[id:existedPetition.id]">
+		<div class="warning">
+			<p>Вибачте, але Вам доведеться перевірити дані:</p>
+			<ul>
+				<g:if test="${validation == 'petition.title.exists'}">
+					<li>петиція <g:link controller="Petition"
+							params="[id:existedPetition.id]">
 								"${ existedPetition.title}"
 							</g:link> вже подана.
-				</li>
-			</g:if>
+					</li>
+				</g:if>
 
-			<g:if
-				test="${validation == 'petition.recaptcha.verification.failed'}">
-				<li>капча заповнена з помилками.</li>
-			</g:if>
-		</ul>
+				<g:if
+					test="${validation == 'petition.recaptcha.verification.failed'}">
+					<li>капча заповнена з помилками.</li>
+				</g:if>
+			</ul>
+		</div>
 	</g:if>
 
 
