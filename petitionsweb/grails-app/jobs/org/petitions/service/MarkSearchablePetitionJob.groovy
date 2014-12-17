@@ -1,7 +1,11 @@
 package org.petitions.service
 
+import org.petitions.*
+import groovy.time.*
+import grails.transaction.Transactional
+import org.petitions.Petition
 
-
+@Transactional
 class MarkSearchablePetitionJob {
     static triggers = {
       simple repeatInterval: 60*1000l // execute job once in 5 seconds
