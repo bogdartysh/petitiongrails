@@ -18,8 +18,8 @@ class MarkConsiderablePetitionJob {
 
 	def execute() {
 		org.petitions.Petition.findAllByClosedOnIsNullAndConsiderabilityThresholdReachedOnIsNull().each { pet ->
-			if (pet.thresholdToBeConsidered <= pet.numberOfVotes + pet.numberOfShares) {
-				pet.considerabilityThresholdReachedOn = new Date()
+			if (pet.thresholdToBeSearchable <= pet.numberOfVotes + pet.numberOfShares) {
+				pet.seachabilityThresholdReachedOn = new Date()
 				pet.save()
 			}
 		}

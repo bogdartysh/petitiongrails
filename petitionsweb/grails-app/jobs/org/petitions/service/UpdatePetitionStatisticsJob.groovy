@@ -7,7 +7,7 @@ import org.petitions.*
 
 @Transactional
 class UpdatePetitionStatisticsJob {
-	static triggers = { simple repeatInterval: 5000l // execute job once in 5 seconds
+	static triggers = { simple repeatInterval: 15000l // execute job once in 5 seconds
 	}
 
 	
