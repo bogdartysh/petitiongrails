@@ -144,8 +144,7 @@
 			</tr>
 			<tr class="table-odd">
 				<td><strong>Загалом</strong></td>
-				<td align="center"><strong>
-							${petition?.numberOfVotes  + petition?.numberOfShares }
+				<td align="center"><strong> ${petition?.numberOfVotes  + petition?.numberOfShares }
 				</strong></td>
 			</tr>
 		</tbody>
@@ -155,8 +154,8 @@
 
 
 	<g:if test="!${petition.closedOn}" style="text-align: center;">
-		<p>Ви можете проголосувати за пропозицію або розшарити її в соц.
-			мережах (буде враховано)</p>
+		<h3>Ви можете проголосувати за пропозицію або розшарити її в соц.
+			мережах (буде враховано)</h3>
 		<center>
 			<div id="vote">
 				<div id="message"></div>
@@ -173,12 +172,40 @@
 			</div>
 			<br />
 			<div id="shares">
-				<script type="text/javascript" src="//yandex.st/share/share.js"
-					charset="utf-8" async="true"></script>
-				<div style="float: center;" class="yashare-auto-init"
-					data-yashareL10n="uk"
-					data-yashareQuickServices="vkontakte,facebook,twitter,gplus"
-					data-yashareTheme="counter"></div>
+				<span class="facebok-like">
+					<div id="fb-root"></div> <script>
+						(function(d, s, id) {
+							var js, fjs = d.getElementsByTagName(s)[0];
+							if (d.getElementById(id))
+								return;
+							js = d.createElement(s);
+							js.id = id;
+							js.src = "//connect.facebook.net/en_EN/all.js#xfbml=1&appId=186071791550679";
+							fjs.parentNode.insertBefore(js, fjs);
+						}(document, 'script', 'facebook-jssdk'));
+					</script>
+					<div class="fb-like" data-href="http://ua-sprava.rhcloud.com"
+						data-send="true" data-width="450" data-show-faces="true"></div>
+				</span> 
+				<span class="twitter-like" > <a
+					href="https://twitter.com/share" class="twitter-share-button"
+					data-via="bogdartysh">Tweet</a> <script>
+						!function(d, s, id) {
+							var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/
+									.test(d.location) ? 'http' : 'https';
+							if (!d.getElementById(id)) {
+								js = d.createElement(s);
+								js.id = id;
+								js.src = p
+										+ '://platform.twitter.com/widgets.js';
+								fjs.parentNode.insertBefore(js, fjs);
+							}
+						}(document, 'script', 'twitter-wjs');
+					</script>
+				</span> <span class="google-like">
+					<div class="g-plusone" data-size="small" data-annotation="inline"
+						data-width="300"></div>
+				</span>
 			</div>
 			<br /> <br />
 		</center>

@@ -55,41 +55,11 @@
 	</article>
 	<footer>
 		<br />
-		<div class="like">
-			<span class="facebok-like">
-				<div id="fb-root"></div> <script>
-					(function(d, s, id) {
-						var js, fjs = d.getElementsByTagName(s)[0];
-						if (d.getElementById(id))
-							return;
-						js = d.createElement(s);
-						js.id = id;
-						js.src = "//connect.facebook.net/en_EN/all.js#xfbml=1&appId=186071791550679";
-						fjs.parentNode.insertBefore(js, fjs);
-					}(document, 'script', 'facebook-jssdk'));
-				</script>
-				<div class="fb-like" data-href="http://ua-sprava.rhcloud.com"
-					data-send="true" data-width="450" data-show-faces="true"></div>
-			</span> <span class="twitter-like"> <a
-				href="https://twitter.com/share" class="twitter-share-button"
-				data-via="bogdartysh">Tweet</a> <script>
-					!function(d, s, id) {
-						var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/
-								.test(d.location) ? 'http' : 'https';
-						if (!d.getElementById(id)) {
-							js = d.createElement(s);
-							js.id = id;
-							js.src = p + '://platform.twitter.com/widgets.js';
-							fjs.parentNode.insertBefore(js, fjs);
-						}
-					}(document, 'script', 'twitter-wjs');
-				</script>
-			</span> <span class="google-like">
-				<div class="g-plusone" data-size="small" data-annotation="inline"
-					data-width="300"></div>
-			</span>
-		</div>
-		<div id="footer">Co. UA Справа</div>
+		
+
+		<div id="footer">Co. UA Справа	<br/> Всі права застережено. Co. 2014</div>
+	
+	
 	</footer>
 </body>
 </html>
