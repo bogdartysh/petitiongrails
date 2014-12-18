@@ -5,12 +5,9 @@ import grails.converters.JSON
 import org.petitions.*
 
 import com.megatome.grails.RecaptchaService
-import org.petitions.service.RequestDetailsDaoService
 
 class VoteController {
 	static defaultAction = "index"
-
-	RequestDetailsDaoService requestDetailsDaoService
 
 	RecaptchaService recaptchaService
 
@@ -25,9 +22,9 @@ class VoteController {
 			def petition = Petition.read(params.id)
 			def votes = Vote.findAll{petition == petition}
 
-			def vote = new Vote(petition: petition, requestDetails : requestDetailsDaoService.getPersistedRequestDetails(request))
+			def vote = new Vote(petition: petition, remoteAddr : ("petition" + request.getHeader("X-Forwarded-For")  + request.getRemoteAddr()).encodeAsSHA256())
 
-			if ( votes.any{v -> v.requestDetails.remoteAddr == vote.requestDetails.remoteAddr}) {
+			if ( votes.any{v -> v.remoteAddr == vote.remoteAddr}) {
 				render "<p class='warning'>Схоже ви вже голосували (є запис про Ваш ПК)</p>"
 			}
 			else {
@@ -39,9 +36,5 @@ class VoteController {
 
 	def all() {
 		render Vote.list() as JSON
-	}
-
-	def requests() {
-		render RequestDetails.list() as JSON
 	}
 }

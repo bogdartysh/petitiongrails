@@ -13,8 +13,8 @@ class Petition {
 		closedOn nullable:true
 		closedDue nullable: true, blank: true
 		closedBy nullable:true
-		requestDetails nullable:true
 		numberOfShares nullable:true
+		remoteAddr nullable: true, blank:true
 	}
 
 	static hasMany = [comments: Comment, votes:Vote]
@@ -24,7 +24,7 @@ class Petition {
 	String publicUrl
 	Addressee addressee;
 	Date createdOn = new Date();
-	RequestDetails requestDetails
+	String remoteAddr
 	Date seachabilityThresholdReachedOn
 	Date considerabilityThresholdReachedOn
 	Integer thresholdToBeSearchable = 100

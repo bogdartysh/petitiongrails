@@ -7,10 +7,11 @@ class Vote {
 		comments nullable:true, blank: true
 		assumeAsFakeReasons nullable: true
 		processedOn nullable:true
+		remoteAddr nullable: true, blank:true
 	}
 
 	String comments
-	RequestDetails requestDetails
+	String remoteAddr
 	Petition petition;
 	Date createdOn = new Date();
 	Date processedOn

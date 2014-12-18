@@ -12,7 +12,7 @@ class LikeCounterService {
 		def url = "ua-sprava.rhcloud.com/petition/index/?id=" + petition.id
 		//def url = "http://gazeta.zn.ua/macrolevel/kak-ostanovit-devalvacionnyy-tornado-_.html"
 		def respFB = rest.get( "https://api.facebook.com/method/links.getStats?format=json&urls=" + url)	
-		print respFB.json
+	//	print respFB.json
 		petition.numberOfShares = respFB.json.total_count[0]
 
 

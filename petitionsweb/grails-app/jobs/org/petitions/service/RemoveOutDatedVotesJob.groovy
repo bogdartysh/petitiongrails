@@ -19,17 +19,9 @@ class RemoveOutDatedVotesJob {
 
 	def execute() {
 		use (TimeCategory) {
-			Date voteToDelDates = new Date() - 31.days
-			def reqsToCheck = [] as Set
+			Date voteToDelDates = new Date() - 31.days			
 			org.petitions.Vote.findAllByProcessedOnLessThan(voteToDelDates).each { vote ->
-				reqsToCheck.add(vote.requestDetails)
 				vote.delete()
-			}
-
-			reqsToCheck.each { req ->
-				if (req.createdOn < voteToDelDates && !Petition.findByRequestDetails(req) && !Vote.findByRequestDetails(req)) {
-					req.delete()
-				}
 			}
 		}
 	}
