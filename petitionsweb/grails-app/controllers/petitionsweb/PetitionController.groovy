@@ -11,10 +11,6 @@ class PetitionController {
 	RecaptchaService recaptchaService
 	def oauthService
 
-	def all() {
-		render Petition.list() as JSON
-	}
-
 	def index() {
 		[petition: Petition.read(params.id)]
 	}
@@ -25,22 +21,33 @@ class PetitionController {
 
 	def open() {
 		def addressee = Addressee.read(params.addresseeId);
-		[petitions: Petition.findAllByClosedOnIsNullAndConsiderabilityThresholdReachedOnIsNotNullAndAdressee(addressee),
+		[petitions: Petition.findAllByClosedOnIsNullAndConsiderabilityThresholdReachedOnIsNotNullAndAddressee(addressee),
+			qtynotsearchable: Petition.findAllByClosedOnIsNullAndConsiderabilityThresholdReachedOnIsNull().size(),
+			addressee:addressee
+		]
+	}
+
+	def openAll() {
+		[
+			petitions: Petition.findAllByClosedOnIsNullAndConsiderabilityThresholdReachedOnIsNotNull(),
 			qtynotsearchable: Petition.findAllByClosedOnIsNullAndConsiderabilityThresholdReachedOnIsNull().size()
 		]
 	}
 
 	def resolved() {
 		def addressee = Addressee.read(params.addresseeId)
-		[petitions: Petition.findAllByClosedOnIsNotNullAndConsiderabilityThresholdReachedOnIsNotNullAndAddressee(addressee)
+		[
+			addressee:addressee,
+			petitions: Petition.findAllByClosedOnIsNotNullAndConsiderabilityThresholdReachedOnIsNotNullAndAddressee(addressee)
 		]
 	}
 
-	@Secured([
-		'ROLE_ADMIN',
-		'ROLE_SUPERUSER',
-		'ROLE_USER'
-	])
+	def resolvedAll() {
+		[
+			petitions: Petition.findAllByClosedOnIsNotNullAndConsiderabilityThresholdReachedOnIsNotNull()
+		]
+	}
+
 	def submit() {
 		if (!recaptchaService.verifyAnswer(session, request.getRemoteAddr(), params) ) {
 			params.put("validation", "petition.recaptcha.verification.failed")

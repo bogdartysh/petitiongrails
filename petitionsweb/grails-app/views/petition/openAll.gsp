@@ -2,7 +2,6 @@
 <head>
 <meta name="layout" content="main" />
 <h2>Відкриті публічні пропозиції по яких іде голосування</h2>
-<h3>${addressee?.title }</h3>
 </head>
 <body>
 	<g:if test="${petitions }">

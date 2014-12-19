@@ -18,7 +18,8 @@ class AddresseeController {
 			}.sort{ it.closedOn },
 			closedPetitions: addressee.petitions.findAll{
 				it.closedOn != null && it.seachabilityThresholdReachedOn != null
-			}.sort{ it.closedOn }]
+			}.sort{ it.closedOn }
+		]
 	}
 
 	def all() {

@@ -2,7 +2,6 @@
 <head>
 <meta name="layout" content="main" />
 <h2>Опрацьовані публічні пропозиції</h2>
-<h3>${addressee?.title }</h3>
 </head>
 <body>
 	<g:if test="${petitions }">
