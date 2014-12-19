@@ -29,11 +29,11 @@
 							${addressee.responsiblePerson.firstName}
 							${addressee.responsiblePerson.lastName}
 						</g:link></td>
-					<td><g:link controller="Addressee" action="votablepetitons"
+					<td><g:link controller="Petition" action="open"
 							params="[id:addressee.id]">
 							${addressee.openPetitionQty}
 						</g:link></td>
-					<td><g:link controller="Addressee" action="resolvedpetitions"
+					<td><g:link controller="Petition" action="resolved"
 							params="[id:addressee.id]">
 							${addressee.workedOutPtetitionQty}
 						</g:link></td>

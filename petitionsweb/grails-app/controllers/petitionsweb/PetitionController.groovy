@@ -1,8 +1,5 @@
 package petitionsweb
 
-import grails.converters.JSON
-import grails.plugin.springsecurity.annotation.Secured
-
 import org.petitions.*
 
 import com.megatome.grails.RecaptchaService
@@ -27,8 +24,15 @@ class PetitionController {
 	}
 
 	def open() {
-		[petitions: Petition.findAllByClosedOnIsNullAndConsiderabilityThresholdReachedOnIsNotNull(),
+		def addressee = Addressee.read(params.addresseeId);
+		[petitions: Petition.findAllByClosedOnIsNullAndConsiderabilityThresholdReachedOnIsNotNullAndAdressee(addressee),
 			qtynotsearchable: Petition.findAllByClosedOnIsNullAndConsiderabilityThresholdReachedOnIsNull().size()
+		]
+	}
+
+	def resolved() {
+		def addressee = Addressee.read(params.addresseeId)
+		[petitions: Petition.findAllByClosedOnIsNotNullAndConsiderabilityThresholdReachedOnIsNotNullAndAddressee(addressee)
 		]
 	}
 
