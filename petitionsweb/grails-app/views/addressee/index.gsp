@@ -44,7 +44,7 @@
 			<tr>
 				<td>Кількість пропозицій, що доступні у пошуку (оприлюднені)</td>
 				<td>
-					${addressee.openPetitionQty }
+					${openpetitions?.size() }
 				</td>
 			</tr>
 			<tr class="table-odd">
