@@ -29,8 +29,8 @@ class PetitionController {
 
 	def openAll() {
 		[
-			petitions: Petition.findAllByClosedOnIsNullAndConsiderabilityThresholdReachedOnIsNotNull(),
-			qtynotsearchable: Petition.findAllByClosedOnIsNullAndConsiderabilityThresholdReachedOnIsNull().size()
+			petitions: Petition.findAllByClosedOnIsNullAndSeachabilityThresholdReachedOnIsNotNull(),
+			qtynotsearchable: Petition.findAllByClosedOnIsNullAndSeachabilityThresholdReachedOnIsNullAndConsiderabilityThresholdReachedOnIsNull().size()
 		]
 	}
 

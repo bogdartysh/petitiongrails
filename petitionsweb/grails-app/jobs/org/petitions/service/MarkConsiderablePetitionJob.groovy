@@ -9,7 +9,7 @@ import org.petitions.Petition
 @Transactional
 class MarkConsiderablePetitionJob {
 	static triggers = {
-		simple repeatInterval: 24 * 60 * 60 * 1000l // execute job once in 5 seconds
+		simple repeatInterval: 1 * 60 * 60 * 1000l // execute job once in 5 seconds
 	}
 
 	def sessionRequired = false
@@ -18,8 +18,8 @@ class MarkConsiderablePetitionJob {
 
 	def execute() {
 		org.petitions.Petition.findAllByClosedOnIsNullAndConsiderabilityThresholdReachedOnIsNull().each { pet ->
-			if (pet.thresholdToBeSearchable <= pet.numberOfVotes + pet.numberOfShares) {
-				pet.seachabilityThresholdReachedOn = new Date()
+			if (pet.thresholdToBeConsidered <= pet.numberOfVotes + pet.numberOfShares) {
+				pet.considerabilityThresholdReachedOn = new Date()
 				pet.save()
 			}
 		}
