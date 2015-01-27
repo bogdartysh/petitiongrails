@@ -36,7 +36,7 @@
 		<g:if test="${petition.publicUrl?.trim()}">
 			<p>
 				Веб адреса на ресурс з більш детальною інформацією:
-				${petition.publicUrl}
+				<a href='${petition.publicUrl}'>${petition.publicUrl}</a>
 			</p>
 		</g:if>
 
@@ -70,7 +70,7 @@
 				<p>Якщо ви підтримуєте цю пропозицію, будь ласка повідомте про
 					неї своїх друзів, або зацікавлені сторони.</p>
 				<p>
-					Адреса петиції: <strong>http://ua-sprava.rhcloud.com/petition/${petition.id}</strong>
+					Адреса петиції: <strong>http://www.propozycija.org.ua/petition/index/${petition.id}</strong>
 				</p>
 				<p>
 					До <strong><g:formatDate format="yyyy-MM-dd"
@@ -184,7 +184,7 @@
 							fjs.parentNode.insertBefore(js, fjs);
 						}(document, 'script', 'facebook-jssdk'));
 					</script>
-					<div class="fb-like" data-href="http://ua-sprava.rhcloud.com"
+					<div class="fb-like" data-href="http://www.propozycija.org.ua"
 						data-send="true" data-width="450" data-show-faces="true"></div>
 				</span> 
 				<span class="twitter-like" > <a

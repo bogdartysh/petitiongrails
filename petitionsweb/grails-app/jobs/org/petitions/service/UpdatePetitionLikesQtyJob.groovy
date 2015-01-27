@@ -7,7 +7,7 @@ import grails.transaction.Transactional
 @Transactional
 class UpdatePetitionLikesQtyJob {
     static triggers = {
-      simple repeatInterval: 5000l // execute job once in 5 seconds
+      simple repeatInterval: 15*60*1000l // execute job once in 15 m
     }
 
     def sessionRequired = false
@@ -18,7 +18,6 @@ class UpdatePetitionLikesQtyJob {
     def execute() {
         Petition.findAllByClosedOnIsNull().each { it ->
 			likeCounterService.updateSharesQty(it)
-			it.save()
-	}
+		}
     }
 }
